@@ -16,14 +16,14 @@ export default function ContactCTA() {
   const isInView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section className="bg-navy py-24 lg:py-32 relative overflow-hidden">
+    <section className="bg-navy py-16 lg:py-32 relative overflow-hidden">
       {/* Animated blobs */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full bg-amber/8 blur-3xl pointer-events-none animate-blob-1" />
       <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-teal/8 blur-3xl pointer-events-none animate-blob-2" />
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-teal/30 to-transparent" />
 
       <div className="max-w-7xl mx-auto px-6 lg:px-8" ref={ref}>
-        <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+        <div className="grid lg:grid-cols-2 gap-10 lg:gap-24 items-center">
           {/* Left: Main CTA */}
           <div>
             <motion.span
@@ -39,7 +39,7 @@ export default function ContactCTA() {
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="font-syne font-extrabold text-4xl lg:text-5xl text-krem mt-3 mb-5 leading-tight"
+              className="font-syne font-extrabold text-3xl sm:text-4xl lg:text-5xl text-krem mt-3 mb-5 leading-tight"
             >
               Kita Ngobrol Dulu.{" "}
               <span className="text-gradient-amber">Tanpa Komitmen.</span>
@@ -49,7 +49,7 @@ export default function ContactCTA() {
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="font-outfit text-lg text-abu-biru leading-relaxed mb-8"
+              className="font-outfit text-base lg:text-lg text-abu-biru leading-relaxed mb-7"
             >
               Kami tidak langsung nawarin paket di awal. Kami dengarkan dulu — cara bisnis
               kamu berjalan, apa yang sudah jalan, dan apa yang masih mentok. Dari situ
@@ -60,7 +60,7 @@ export default function ContactCTA() {
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="flex flex-col sm:flex-row gap-4 mb-10"
+              className="flex flex-col gap-3 sm:flex-row sm:gap-4 mb-8 sm:mb-10"
             >
               <motion.a
                 href="https://wa.me/6281357662424?text=Halo%20Raskop%20Digital%2C%20saya%20ingin%20ngobrol%20dulu%20soal%20kebutuhan%20digital%20saya."
@@ -68,7 +68,7 @@ export default function ContactCTA() {
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.04, boxShadow: "0 0 40px rgba(232,135,74,0.3)" }}
                 whileTap={{ scale: 0.97 }}
-                className="inline-flex items-center justify-center gap-2.5 bg-amber text-navy font-outfit font-semibold text-base px-7 py-4 rounded-full hover:bg-amber/90 transition-colors"
+                className="inline-flex items-center justify-center gap-2.5 bg-amber text-navy font-outfit font-semibold text-base px-7 py-4 rounded-full hover:bg-amber/90 transition-colors w-full sm:w-auto"
               >
                 <MessageCircle size={18} />
                 Chat via WhatsApp
@@ -80,7 +80,7 @@ export default function ContactCTA() {
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.04 }}
                 whileTap={{ scale: 0.97 }}
-                className="inline-flex items-center justify-center gap-2.5 border border-white/20 text-krem font-outfit font-medium text-base px-7 py-4 rounded-full hover:bg-white/10 transition-all"
+                className="inline-flex items-center justify-center gap-2.5 border border-white/20 text-krem font-outfit font-medium text-base px-7 py-4 rounded-full hover:bg-white/10 transition-all w-full sm:w-auto"
               >
                 <Instagram size={18} />
                 @raskop_digital

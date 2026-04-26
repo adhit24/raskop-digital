@@ -42,13 +42,13 @@ export default function About() {
   const isInView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="tentang" className="bg-krem py-24 lg:py-32 relative overflow-hidden">
+    <section id="tentang" className="bg-krem py-16 lg:py-32 relative overflow-hidden">
       {/* Decorative element */}
       <div className="absolute top-0 right-0 w-64 h-64 bg-teal/5 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-48 h-48 bg-amber/5 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+        <div className="grid lg:grid-cols-2 gap-10 lg:gap-24 items-center">
           {/* Left: Text */}
           <div ref={ref}>
             <motion.div
@@ -59,16 +59,16 @@ export default function About() {
               <span className="font-outfit text-sm font-medium text-teal uppercase tracking-widest">
                 Siapa Kami
               </span>
-              <h2 className="font-syne font-extrabold text-4xl lg:text-5xl text-navy mt-3 mb-6 leading-tight">
+              <h2 className="font-syne font-extrabold text-3xl sm:text-4xl lg:text-5xl text-navy mt-3 mb-5 leading-tight">
                 Bukan Agency Biasa.{" "}
                 <span className="text-teal">Partner</span> yang Ngerti Bisnis Kamu.
               </h2>
-              <p className="font-outfit text-lg text-navy/70 leading-relaxed mb-6">
+              <p className="font-outfit text-base lg:text-lg text-navy/70 leading-relaxed mb-5">
                 Raskop Digital lahir dari pemahaman satu hal: kebanyakan UMKM bukan tidak mau
                 digital — mereka tidak tahu mulai dari mana, atau sudah coba tapi hasilnya
                 tidak kepakai.
               </p>
-              <p className="font-outfit text-lg text-navy/70 leading-relaxed mb-8">
+              <p className="font-outfit text-base lg:text-lg text-navy/70 leading-relaxed mb-6">
                 Kami tidak duduk di balik layar dan desain sesuatu yang kelihatan bagus di
                 portofolio. Kami duduk <em>bareng kamu</em> — pelajari cara bisnis kamu
                 berjalan di lapangan, lalu bantu terjemahkannya ke sistem digital yang{" "}
@@ -115,7 +115,7 @@ export default function About() {
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}
           transition={{ duration: 0.6, delay: 0.5 }}
-          className="mt-16 text-center"
+          className="mt-10 lg:mt-16 text-center"
         >
           <p className="font-outfit text-abu-biru text-sm">@raskopdigital</p>
         </motion.div>

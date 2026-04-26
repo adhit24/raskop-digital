@@ -130,13 +130,13 @@ export default function Packages() {
   const [expanded, setExpanded] = useState<string | null>(null);
 
   return (
-    <section id="paket" className="bg-krem py-24 lg:py-32 relative overflow-hidden">
+    <section id="paket" className="bg-krem py-16 lg:py-32 relative overflow-hidden">
       <div className="absolute top-0 right-0 w-80 h-80 bg-teal/5 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-64 h-64 bg-amber/5 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 lg:px-8" ref={ref}>
         {/* Header */}
-        <div className="text-center mb-14">
+        <div className="text-center mb-10 lg:mb-14">
           <motion.span
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -149,7 +149,7 @@ export default function Packages() {
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="font-syne font-extrabold text-4xl lg:text-5xl text-navy mt-3 mb-4 leading-tight"
+            className="font-syne font-extrabold text-3xl sm:text-4xl lg:text-5xl text-navy mt-3 mb-4 leading-tight"
           >
             Paket Harga Raskop Digital
           </motion.h2>
@@ -157,7 +157,7 @@ export default function Packages() {
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="font-outfit text-lg text-navy/60 max-w-xl mx-auto"
+            className="font-outfit text-base lg:text-lg text-navy/60 max-w-xl mx-auto"
           >
             Semua paket sudah termasuk konsultasi awal gratis. Kita ngobrol dulu — baru
             tentukan paket yang paling sesuai.
@@ -165,7 +165,7 @@ export default function Packages() {
         </div>
 
         {/* Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 sm:gap-6">
           {packages.map((pkg, i) => (
             <motion.div
               key={pkg.id}

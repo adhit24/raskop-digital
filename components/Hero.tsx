@@ -63,7 +63,7 @@ export default function Hero() {
 
       <motion.div
         style={{ y, opacity }}
-        className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 pt-24 pb-16 w-full"
+        className="relative z-10 max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 pt-24 pb-12 lg:pb-16 w-full"
       >
         <div className="max-w-3xl">
           {/* Badge */}
@@ -71,7 +71,7 @@ export default function Hero() {
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="inline-flex items-center gap-2 bg-white/10 border border-white/20 rounded-full px-4 py-1.5 mb-8"
+            className="inline-flex items-center gap-2 bg-white/10 border border-white/20 rounded-full px-4 py-1.5 mb-6 sm:mb-8"
           >
             <span className="w-2 h-2 rounded-full bg-amber animate-pulse-slow" />
             <span className="font-outfit text-sm text-abu-biru">
@@ -88,7 +88,7 @@ export default function Hero() {
                   variants={wordVariants}
                   initial="hidden"
                   animate="visible"
-                  className="font-syne font-extrabold text-5xl sm:text-6xl lg:text-7xl text-krem leading-[1.05] tracking-tight"
+                  className="font-syne font-extrabold text-[2.1rem] leading-[1.08] sm:text-5xl lg:text-7xl text-krem tracking-tight"
                 >
                   {lineIdx === 0 && (
                     <>
@@ -107,7 +107,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.7 }}
-            className="font-outfit text-lg text-abu-biru leading-relaxed mb-10 max-w-xl"
+            className="font-outfit text-base sm:text-lg text-abu-biru leading-relaxed mb-7 sm:mb-10 max-w-xl"
           >
             Raskop Digital hadir untuk UMKM yang sudah siap — kami bantu
             terjemahkan cara bisnis kamu jalan ke dalam sistem digital yang{" "}
@@ -119,7 +119,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.9 }}
-            className="flex flex-col sm:flex-row gap-4"
+            className="flex flex-col sm:flex-row gap-3 sm:gap-4"
           >
             <motion.a
               href="https://wa.me/6281357662424?text=Halo%20Raskop%20Digital%2C%20saya%20ingin%20ngobrol%20dulu%20soal%20kebutuhan%20digital%20saya."
@@ -127,7 +127,7 @@ export default function Hero() {
               rel="noopener noreferrer"
               whileHover={{ scale: 1.04, boxShadow: "0 0 32px rgba(232,135,74,0.3)" }}
               whileTap={{ scale: 0.97 }}
-              className="inline-flex items-center justify-center gap-2 bg-amber text-navy font-outfit font-semibold text-base px-8 py-4 rounded-full transition-all duration-200"
+              className="inline-flex items-center justify-center gap-2 bg-amber text-navy font-outfit font-semibold text-base px-7 py-3.5 sm:px-8 sm:py-4 rounded-full transition-all duration-200 w-full sm:w-auto"
             >
               Kita Ngobrol Dulu
             </motion.a>
@@ -137,7 +137,7 @@ export default function Hero() {
               }}
               whileHover={{ scale: 1.04 }}
               whileTap={{ scale: 0.97 }}
-              className="inline-flex items-center justify-center gap-2 border border-white/20 text-krem font-outfit font-medium text-base px-8 py-4 rounded-full hover:bg-white/10 transition-all duration-200"
+              className="inline-flex items-center justify-center gap-2 border border-white/20 text-krem font-outfit font-medium text-base px-7 py-3.5 sm:px-8 sm:py-4 rounded-full hover:bg-white/10 transition-all duration-200 w-full sm:w-auto"
             >
               Lihat Paket
             </motion.button>
@@ -148,7 +148,7 @@ export default function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 1.2 }}
-            className="flex flex-wrap items-center gap-6 mt-12"
+            className="flex flex-wrap items-center gap-4 sm:gap-6 mt-8 sm:mt-12"
           >
             {[
               "Tanpa komitmen di awal",

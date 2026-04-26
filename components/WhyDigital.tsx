@@ -69,7 +69,7 @@ export default function WhyDigital() {
   const timelineInView = useInView(timelineRef, { once: true, margin: "-80px" });
 
   return (
-    <section id="mengapa-digital" className="bg-navy py-24 lg:py-32 relative overflow-hidden">
+    <section id="mengapa-digital" className="bg-navy py-16 lg:py-32 relative overflow-hidden">
       {/* Background decorations */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-teal/30 to-transparent" />
       <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-amber/20 to-transparent" />
@@ -77,7 +77,7 @@ export default function WhyDigital() {
 
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         {/* Header */}
-        <div ref={ref} className="text-center mb-16">
+        <div ref={ref} className="text-center mb-10 lg:mb-16">
           <motion.span
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -90,7 +90,7 @@ export default function WhyDigital() {
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="font-syne font-extrabold text-4xl lg:text-5xl text-krem mt-3 mb-5 leading-tight"
+            className="font-syne font-extrabold text-3xl sm:text-4xl lg:text-5xl text-krem mt-3 mb-4 leading-tight"
           >
             Kenapa Harus Digital —{" "}
             <span className="text-gradient-teal">Sekarang?</span>
@@ -99,7 +99,7 @@ export default function WhyDigital() {
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="font-outfit text-lg text-abu-biru max-w-2xl mx-auto leading-relaxed"
+            className="font-outfit text-base lg:text-lg text-abu-biru max-w-2xl mx-auto leading-relaxed"
           >
             Bukan soal ikut tren. Ini soal bagaimana bisnis kamu ditemukan,
             dipercaya, dan diakses — di dunia yang sudah bergerak ke digital jauh
@@ -108,7 +108,7 @@ export default function WhyDigital() {
         </div>
 
         {/* Stats Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-20">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-12 lg:mb-20">
           {globalStats.map((stat, i) => (
             <motion.div
               key={stat.label}
@@ -141,14 +141,14 @@ export default function WhyDigital() {
             initial={{ opacity: 0, x: -20 }}
             animate={timelineInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.5 }}
-            className="font-syne font-bold text-2xl text-krem mb-10 text-center"
+            className="font-syne font-bold text-xl sm:text-2xl text-krem mb-7 sm:mb-10 text-center"
           >
             Bagaimana Dunia Berubah — dan Apa Artinya untuk Bisnis Kamu
           </motion.h3>
 
           <div className="relative">
             {/* Timeline line */}
-            <div className="absolute left-4 lg:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-teal/50 via-amber/30 to-transparent" />
+            <div className="absolute left-3 sm:left-4 lg:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-teal/50 via-amber/30 to-transparent" />
 
             <div className="space-y-8">
               {insights.map((item, i) => (
@@ -157,14 +157,14 @@ export default function WhyDigital() {
                   initial={{ opacity: 0, x: i % 2 === 0 ? -30 : 30 }}
                   animate={timelineInView ? { opacity: 1, x: 0 } : {}}
                   transition={{ duration: 0.6, delay: i * 0.12 }}
-                  className={`relative flex gap-6 lg:gap-0 ${
+                  className={`relative flex gap-6 lg:gap-0 pl-2 sm:pl-0 ${
                     i % 2 === 0 ? "lg:justify-end" : "lg:justify-start"
                   }`}
                 >
                   {/* Timeline dot */}
-                  <div className="absolute left-4 lg:left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-amber border-2 border-navy mt-5" />
+                  <div className="absolute left-3 sm:left-4 lg:left-1/2 -translate-x-1/2 w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-amber border-2 border-navy mt-5" />
 
-                  <div className={`ml-10 lg:ml-0 lg:w-5/12 ${i % 2 === 0 ? "lg:pr-12" : "lg:pl-12"}`}>
+                  <div className={`ml-8 sm:ml-10 lg:ml-0 lg:w-5/12 ${i % 2 === 0 ? "lg:pr-12" : "lg:pl-12"}`}>
                     <div className="bg-white/5 border border-white/10 rounded-xl p-5">
                       <span className="font-syne font-extrabold text-amber text-xl">{item.year}</span>
                       <p className="font-outfit text-sm text-abu-biru mt-2 leading-relaxed">{item.event}</p>
@@ -193,7 +193,7 @@ export default function WhyDigital() {
             }}
             whileHover={{ scale: 1.04 }}
             whileTap={{ scale: 0.97 }}
-            className="bg-amber text-navy font-outfit font-semibold px-8 py-3.5 rounded-full text-sm hover:bg-amber/90 transition-colors"
+            className="bg-amber text-navy font-outfit font-semibold px-7 py-3.5 rounded-full text-sm hover:bg-amber/90 transition-colors w-full sm:w-auto"
           >
             Mulai dari Mana yang Tepat →
           </motion.button>
