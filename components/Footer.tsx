@@ -2,18 +2,13 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { Instagram, MessageCircle, Mail, ArrowUp } from "lucide-react";
+import { MessageCircle, Mail, ArrowUp } from "lucide-react";
 
 const contacts = [
   {
     icon: MessageCircle,
     label: "WhatsApp",
     href: "https://wa.me/6281357662424",
-  },
-  {
-    icon: Instagram,
-    label: "@raskop_digital",
-    href: "https://www.instagram.com/raskop_digital/",
   },
   {
     icon: Mail,
