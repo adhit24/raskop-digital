@@ -2,6 +2,7 @@
 
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
+import Image from "next/image";
 import { Star, Quote } from "lucide-react";
 
 const testimonials = [
@@ -164,22 +165,19 @@ export default function Testimonials() {
             Dipercaya oleh pelaku usaha
           </p>
           <div className="relative overflow-hidden">
-            <div className="flex gap-3 logo-marquee">
+            <div className="flex gap-4 logo-marquee">
               {[...clientLogos, ...clientLogos].map((client, i) => (
                 <div
                   key={i}
-                  className="flex-shrink-0 flex items-center gap-2.5 bg-white border border-navy/8 rounded-xl px-4 py-3 shadow-sm"
+                  className="flex-shrink-0 flex items-center justify-center bg-white border border-navy/8 rounded-xl px-5 py-3 shadow-sm h-16 w-32 group"
                 >
-                  <div
-                    className={`w-7 h-7 ${client.color} rounded-lg flex items-center justify-center flex-shrink-0`}
-                  >
-                    <span className="font-syne font-extrabold text-white text-xs">
-                      {client.initial}
-                    </span>
-                  </div>
-                  <span className="font-syne font-bold text-navy text-xs whitespace-nowrap">
-                    {client.name}
-                  </span>
+                  <Image
+                    src={client.src}
+                    alt={client.name}
+                    width={96}
+                    height={40}
+                    className="object-contain h-8 w-auto max-w-[96px] grayscale group-hover:grayscale-0 transition-all duration-300 opacity-60 group-hover:opacity-100"
+                  />
                 </div>
               ))}
             </div>
@@ -205,14 +203,12 @@ export default function Testimonials() {
 }
 
 const clientLogos = [
-  { name: "Salon Cantique",           initial: "SC", color: "bg-teal"           },
-  { name: "Warung Sabar Menanti",     initial: "WS", color: "bg-amber"          },
-  { name: "Moment Creative",          initial: "MC", color: "bg-navy"           },
-  { name: "Klinik Aura",             initial: "KA", color: "bg-teal"           },
-  { name: "Bengkel Auto Prima",       initial: "BA", color: "bg-amber"          },
-  { name: "Batik Nusantara",          initial: "BN", color: "bg-navy"           },
-  { name: "Catering Bu Tini",         initial: "CT", color: "bg-teal"           },
-  { name: "Kings Barbershop",         initial: "KB", color: "bg-amber"          },
-  { name: "Serenity Yoga Studio",     initial: "SY", color: "bg-navy"           },
-  { name: "Kue Manis Bakery",         initial: "KM", color: "bg-teal"           },
+  { name: "Salon Cantique",       src: "/clients/salon.png"           },
+  { name: "Moment Creative",      src: "/clients/creative.png"        },
+  { name: "Klinik Aura",         src: "/clients/klinik.jpg"          },
+  { name: "Batik Nusantara",      src: "/clients/batik_nusantara.png" },
+  { name: "Catering Bu Tini",     src: "/clients/catring.jpg"         },
+  { name: "Kings Barbershop",     src: "/clients/kings.jpg"           },
+  { name: "Serenity Yoga Studio", src: "/clients/yoga.avif"           },
+  { name: "Kue Manis Bakery",     src: "/clients/bakery.png"          },
 ];
