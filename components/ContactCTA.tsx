@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { MessageCircle, Phone, Instagram, ArrowRight } from "lucide-react";
+import { MessageCircle, Phone, ArrowRight } from "lucide-react";
 
 const steps = [
   { num: "01", label: "Hubungi kami via WhatsApp" },
@@ -73,18 +73,6 @@ export default function ContactCTA() {
                 <MessageCircle size={18} />
                 Chat via WhatsApp
               </motion.a>
-
-              <motion.a
-                href="https://www.instagram.com/raskop_digital/"
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.04 }}
-                whileTap={{ scale: 0.97 }}
-                className="inline-flex items-center justify-center gap-2.5 border border-white/20 text-krem font-outfit font-medium text-base px-7 py-4 rounded-full hover:bg-white/10 transition-all w-full sm:w-auto"
-              >
-                <Instagram size={18} />
-                @raskop_digital
-              </motion.a>
             </motion.div>
 
             {/* Sign-off */}
@@ -149,15 +137,6 @@ export default function ContactCTA() {
                 >
                   <Phone size={15} className="text-amber" />
                   +62 813-5766-2424
-                </a>
-                <a
-                  href="https://www.instagram.com/raskop_digital/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 font-outfit text-sm text-krem hover:text-amber transition-colors"
-                >
-                  <Instagram size={15} className="text-amber" />
-                  @raskop_digital
                 </a>
               </div>
             </motion.div>
