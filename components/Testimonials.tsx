@@ -2,7 +2,6 @@
 
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import Image from "next/image";
 import { Star, Quote } from "lucide-react";
 
 const testimonials = [
@@ -171,11 +170,9 @@ export default function Testimonials() {
                   key={i}
                   className="flex-shrink-0 flex items-center justify-center bg-white border border-navy/8 rounded-xl px-5 py-3 shadow-sm h-16 w-32 group"
                 >
-                  <Image
+                  <img
                     src={client.src}
                     alt={client.name}
-                    width={96}
-                    height={40}
                     className="object-contain h-8 w-auto max-w-[96px] grayscale group-hover:grayscale-0 transition-all duration-300 opacity-60 group-hover:opacity-100"
                   />
                 </div>
