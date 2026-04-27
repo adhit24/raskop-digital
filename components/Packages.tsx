@@ -17,6 +17,7 @@ type Package = {
   tagColor?: string;
   name: string;
   price: string;
+  promoPrice?: string;
   priceNote: string;
   desc: string;
   features: Feature[];
@@ -136,6 +137,7 @@ const ecommercePackages: Package[] = [
     tagColor: "bg-teal/20 text-teal",
     name: "Katalog Digital",
     price: "2.000.000",
+    promoPrice: "1.500.000",
     priceNote: "One-time payment",
     desc: "Website katalog produk online — pelanggan lihat produk & pesan langsung via WhatsApp. Tanpa ribet payment gateway.",
     features: [
@@ -161,6 +163,7 @@ const ecommercePackages: Package[] = [
     tagColor: "bg-teal/20 text-teal",
     name: "Toko Online",
     price: "4.500.000",
+    promoPrice: "3.000.000",
     priceNote: "One-time payment",
     desc: "Toko online lengkap dengan keranjang belanja & payment gateway. Pelanggan bisa checkout langsung di website kamu.",
     features: [
@@ -186,6 +189,7 @@ const ecommercePackages: Package[] = [
     tagColor: "bg-amber/20 text-amber",
     name: "E-Commerce Pro",
     price: "7.500.000",
+    promoPrice: "6.000.000",
     priceNote: "One-time payment",
     desc: "Platform jual beli penuh fitur — inventori, multi-varian produk, voucher diskon, hingga laporan penjualan real-time.",
     features: [
@@ -211,6 +215,7 @@ const ecommercePackages: Package[] = [
     tagColor: "bg-amber/20 text-amber",
     name: "E-Commerce Full Brand",
     price: "11.000.000",
+    promoPrice: "8.500.000",
     priceNote: "One-time payment",
     desc: "E-commerce profesional + identitas brand lengkap. Dari toko online canggih hingga visual brand yang siap bersaing.",
     features: [
@@ -365,20 +370,46 @@ export default function Packages() {
                     {pkg.name}
                   </h3>
                   <div className="mb-3">
-                    <span
-                      className={`font-syne font-extrabold text-2xl ${
-                        pkg.highlighted ? "text-amber" : "text-navy"
-                      }`}
-                    >
-                      Rp {pkg.price}
-                    </span>
-                    <span
-                      className={`font-outfit text-xs ml-2 ${
-                        pkg.highlighted ? "text-abu-biru" : "text-navy/40"
-                      }`}
-                    >
-                      {pkg.priceNote}
-                    </span>
+                    {pkg.promoPrice ? (
+                      <>
+                        <div className="flex items-center gap-2 mb-0.5">
+                          <span
+                            className={`font-syne font-extrabold text-2xl ${
+                              pkg.highlighted ? "text-amber" : "text-navy"
+                            }`}
+                          >
+                            Rp {pkg.promoPrice}
+                          </span>
+                          <span
+                            className={`font-outfit text-xs line-through ${
+                              pkg.highlighted ? "text-abu-biru/60" : "text-navy/35"
+                            }`}
+                          >
+                            Rp {pkg.price}
+                          </span>
+                        </div>
+                        <span className="inline-flex items-center gap-1 bg-red-500/10 text-red-500 font-outfit font-semibold text-[10px] px-2 py-0.5 rounded-full">
+                          🔥 Promo s/d 31 Mei 2026
+                        </span>
+                      </>
+                    ) : (
+                      <>
+                        <span
+                          className={`font-syne font-extrabold text-2xl ${
+                            pkg.highlighted ? "text-amber" : "text-navy"
+                          }`}
+                        >
+                          Rp {pkg.price}
+                        </span>
+                        <span
+                          className={`font-outfit text-xs ml-2 ${
+                            pkg.highlighted ? "text-abu-biru" : "text-navy/40"
+                          }`}
+                        >
+                          {pkg.priceNote}
+                        </span>
+                      </>
+                    )}
                   </div>
 
                   <p
@@ -464,7 +495,7 @@ export default function Packages() {
 
                   {/* CTA */}
                   <motion.a
-                    href={`https://wa.me/6281357662424?text=Halo%20Raskop%20Digital%2C%20saya%20tertarik%20dengan%20${encodeURIComponent(pkg.name)}%20(Rp%20${pkg.price}).%20Boleh%20kita%20ngobrol%20dulu%3F`}
+                    href={`https://wa.me/6281357662424?text=Halo%20Raskop%20Digital%2C%20saya%20tertarik%20dengan%20${encodeURIComponent(pkg.name)}%20(Rp%20${pkg.promoPrice ?? pkg.price}).%20Boleh%20kita%20ngobrol%20dulu%3F`}
                     target="_blank"
                     rel="noopener noreferrer"
                     whileHover={{ scale: 1.03 }}
