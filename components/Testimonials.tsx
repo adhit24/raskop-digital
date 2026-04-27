@@ -152,7 +152,67 @@ export default function Testimonials() {
             <span className="font-outfit text-sm text-abu-biru">dari 27+ ulasan klien</span>
           </div>
         </motion.div>
+
+        {/* Client Logos Marquee */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 1 }}
+          className="mt-14"
+        >
+          <p className="text-center font-outfit text-xs text-navy/35 uppercase tracking-widest mb-6">
+            Dipercaya oleh pelaku usaha
+          </p>
+          <div className="relative overflow-hidden">
+            <div className="flex gap-3 logo-marquee">
+              {[...clientLogos, ...clientLogos].map((client, i) => (
+                <div
+                  key={i}
+                  className="flex-shrink-0 flex items-center gap-2.5 bg-white border border-navy/8 rounded-xl px-4 py-3 shadow-sm"
+                >
+                  <div
+                    className={`w-7 h-7 ${client.color} rounded-lg flex items-center justify-center flex-shrink-0`}
+                  >
+                    <span className="font-syne font-extrabold text-white text-xs">
+                      {client.initial}
+                    </span>
+                  </div>
+                  <span className="font-syne font-bold text-navy text-xs whitespace-nowrap">
+                    {client.name}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </motion.div>
       </div>
+
+      <style>{`
+        .logo-marquee {
+          animation: marquee-scroll 28s linear infinite;
+          width: max-content;
+        }
+        .logo-marquee:hover {
+          animation-play-state: paused;
+        }
+        @keyframes marquee-scroll {
+          0%   { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+      `}</style>
     </section>
   );
 }
+
+const clientLogos = [
+  { name: "Salon Cantique",           initial: "SC", color: "bg-teal"           },
+  { name: "Warung Sabar Menanti",     initial: "WS", color: "bg-amber"          },
+  { name: "Moment Creative",          initial: "MC", color: "bg-navy"           },
+  { name: "Klinik Aura",             initial: "KA", color: "bg-teal"           },
+  { name: "Bengkel Auto Prima",       initial: "BA", color: "bg-amber"          },
+  { name: "Batik Nusantara",          initial: "BN", color: "bg-navy"           },
+  { name: "Catering Bu Tini",         initial: "CT", color: "bg-teal"           },
+  { name: "Kings Barbershop",         initial: "KB", color: "bg-amber"          },
+  { name: "Serenity Yoga Studio",     initial: "SY", color: "bg-navy"           },
+  { name: "Kue Manis Bakery",         initial: "KM", color: "bg-teal"           },
+];
