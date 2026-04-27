@@ -2,7 +2,11 @@
 
 import { useRef, useState } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
-import { Check, X, Zap, Layout, Database, Star, type LucideIcon } from "lucide-react";
+import {
+  Check, X, Zap, Layout, Database, Star,
+  ShoppingBag, ShoppingCart, Store, Rocket,
+  type LucideIcon,
+} from "lucide-react";
 
 type Feature = { text: string; included: boolean };
 
@@ -21,7 +25,7 @@ type Package = {
   highlighted: boolean;
 };
 
-const packages: Package[] = [
+const reservasiPackages: Package[] = [
   {
     id: "starter",
     icon: Zap,
@@ -124,10 +128,118 @@ const packages: Package[] = [
   },
 ];
 
+const ecommercePackages: Package[] = [
+  {
+    id: "ec-katalog",
+    icon: ShoppingBag,
+    tag: "Entry Level",
+    tagColor: "bg-teal/20 text-teal",
+    name: "Katalog Digital",
+    price: "2.000.000",
+    priceNote: "One-time payment",
+    desc: "Website katalog produk online — pelanggan lihat produk & pesan langsung via WhatsApp. Tanpa ribet payment gateway.",
+    features: [
+      { text: "Web katalog produk (hingga 50 produk)", included: true },
+      { text: "Halaman detail produk + foto & deskripsi", included: true },
+      { text: "Kategori & filter produk", included: true },
+      { text: "Tombol pesan/tanya via WhatsApp per produk", included: true },
+      { text: "Profil toko & info kontak", included: true },
+      { text: "Mobile responsive + fast loading", included: true },
+      { text: "Revisi desain hingga puas", included: true },
+      { text: "Konsultasi domain & hosting", included: true },
+      { text: "Keranjang belanja (cart)", included: false },
+      { text: "Payment gateway & checkout online", included: false },
+    ],
+    bestFor: "UMKM, toko fashion, kerajinan, makanan, produk handmade",
+    ctaLabel: "Pilih Paket Ini",
+    highlighted: false,
+  },
+  {
+    id: "ec-toko",
+    icon: ShoppingCart,
+    tag: "Populer",
+    tagColor: "bg-teal/20 text-teal",
+    name: "Toko Online",
+    price: "4.500.000",
+    priceNote: "One-time payment",
+    desc: "Toko online lengkap dengan keranjang belanja & payment gateway. Pelanggan bisa checkout langsung di website kamu.",
+    features: [
+      { text: "Custom web toko online multi-halaman", included: true },
+      { text: "Keranjang belanja (shopping cart)", included: true },
+      { text: "Checkout & payment gateway (Midtrans/Xendit)", included: true },
+      { text: "Manajemen produk & kategori (CMS)", included: true },
+      { text: "Halaman produk detail + galeri foto", included: true },
+      { text: "Filter & pencarian produk", included: true },
+      { text: "Notifikasi order via WhatsApp & Email", included: true },
+      { text: "Dashboard admin kelola pesanan", included: true },
+      { text: "Domain & hosting (1 tahun)", included: true },
+      { text: "Support teknis 2 bulan", included: true },
+    ],
+    bestFor: "Toko fashion, elektronik, kosmetik, makanan, aksesori",
+    ctaLabel: "Pilih Paket Ini",
+    highlighted: false,
+  },
+  {
+    id: "ec-pro",
+    icon: Store,
+    tag: "Paling Lengkap",
+    tagColor: "bg-amber/20 text-amber",
+    name: "E-Commerce Pro",
+    price: "7.500.000",
+    priceNote: "One-time payment",
+    desc: "Platform jual beli penuh fitur — inventori, multi-varian produk, voucher diskon, hingga laporan penjualan real-time.",
+    features: [
+      { text: "Semua fitur Toko Online", included: true },
+      { text: "Manajemen inventori & stok otomatis", included: true },
+      { text: "Multi-varian produk (warna, ukuran, tipe)", included: true },
+      { text: "Sistem voucher & kode diskon", included: true },
+      { text: "Hitung ongkos kirim otomatis (RajaOngkir)", included: true },
+      { text: "Laporan penjualan & analitik dashboard", included: true },
+      { text: "Halaman ulasan & rating produk", included: true },
+      { text: "SEO produk (siap muncul di Google)", included: true },
+      { text: "Mobile responsive + optimasi kecepatan", included: true },
+      { text: "Support prioritas 3 bulan", included: true },
+    ],
+    bestFor: "Bisnis dengan banyak SKU, toko multi-kategori, brand yang mau scale",
+    ctaLabel: "Pilih Paket Ini",
+    highlighted: true,
+  },
+  {
+    id: "ec-full",
+    icon: Rocket,
+    tag: "Full Package",
+    tagColor: "bg-amber/20 text-amber",
+    name: "E-Commerce Full Brand",
+    price: "11.000.000",
+    priceNote: "One-time payment",
+    desc: "E-commerce profesional + identitas brand lengkap. Dari toko online canggih hingga visual brand yang siap bersaing.",
+    features: [
+      { text: "Semua fitur E-Commerce Pro", included: true },
+      { text: "Desain identitas visual (logo + color system)", included: true },
+      { text: "Social media kit (10 template siap pakai)", included: true },
+      { text: "Halaman landing promo / campaign", included: true },
+      { text: "Setup Google My Business & Google Shopping", included: true },
+      { text: "SEO on-page lengkap + submit sitemap", included: true },
+      { text: "Google Analytics + Meta Pixel integration", included: true },
+      { text: "Pelatihan kelola toko & admin (2 sesi)", included: true },
+      { text: "Konsultasi strategi penjualan digital", included: true },
+      { text: "Support prioritas 6 bulan", included: true },
+    ],
+    bestFor: "Brand yang mau serius jualan online & punya identitas visual kuat",
+    ctaLabel: "Pilih Paket Ini",
+    highlighted: false,
+  },
+];
+
+type Category = "reservasi" | "ecommerce";
+
 export default function Packages() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-80px" });
   const [expanded, setExpanded] = useState<string | null>(null);
+  const [category, setCategory] = useState<Category>("reservasi");
+
+  const activePackages = category === "reservasi" ? reservasiPackages : ecommercePackages;
 
   return (
     <section id="paket" className="bg-krem py-16 lg:py-32 relative overflow-hidden">
@@ -136,7 +248,7 @@ export default function Packages() {
 
       <div className="max-w-7xl mx-auto px-6 lg:px-8" ref={ref}>
         {/* Header */}
-        <div className="text-center mb-10 lg:mb-14">
+        <div className="text-center mb-8 lg:mb-12">
           <motion.span
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -164,172 +276,212 @@ export default function Packages() {
           </motion.p>
         </div>
 
-        {/* Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 sm:gap-6">
-          {packages.map((pkg, i) => (
-            <motion.div
-              key={pkg.id}
-              initial={{ opacity: 0, y: 50 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: i * 0.1 + 0.3 }}
-              className={`relative rounded-2xl flex flex-col package-card ${
-                pkg.highlighted
-                  ? "bg-navy shadow-2xl shadow-navy/20 ring-2 ring-amber/40"
-                  : "bg-white shadow-md shadow-navy/8 border border-navy/8"
+        {/* Category Toggle */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5, delay: 0.3 }}
+          className="flex justify-center mb-10 lg:mb-14"
+        >
+          <div className="inline-flex bg-white border border-navy/10 rounded-2xl p-1.5 shadow-sm gap-1">
+            <button
+              onClick={() => { setCategory("reservasi"); setExpanded(null); }}
+              className={`relative font-outfit font-semibold text-sm px-5 py-2.5 rounded-xl transition-all duration-300 ${
+                category === "reservasi"
+                  ? "bg-navy text-krem shadow-md"
+                  : "text-navy/50 hover:text-navy"
               }`}
             >
-              {/* Popular badge */}
-              {pkg.highlighted && (
-                <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-amber text-navy font-outfit font-bold text-xs px-4 py-1 rounded-full whitespace-nowrap">
-                  ⭐ Paling Banyak Dipilih
-                </div>
-              )}
+              📅 Reservasi & Booking
+            </button>
+            <button
+              onClick={() => { setCategory("ecommerce"); setExpanded(null); }}
+              className={`relative font-outfit font-semibold text-sm px-5 py-2.5 rounded-xl transition-all duration-300 ${
+                category === "ecommerce"
+                  ? "bg-navy text-krem shadow-md"
+                  : "text-navy/50 hover:text-navy"
+              }`}
+            >
+              🛍️ E-Commerce & Toko Online
+            </button>
+          </div>
+        </motion.div>
 
-              <div className="p-6 flex-1 flex flex-col">
-                {/* Icon + tag */}
-                <div className="flex items-start justify-between mb-5">
-                  <div
-                    className={`w-11 h-11 rounded-xl flex items-center justify-center ${
-                      pkg.highlighted ? "bg-amber/20" : "bg-navy/8"
-                    }`}
-                  >
-                    <pkg.icon
-                      size={20}
-                      className={pkg.highlighted ? "text-amber" : "text-navy"}
-                    />
+        {/* Cards */}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={category}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.35 }}
+            className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 sm:gap-6"
+          >
+            {activePackages.map((pkg, i) => (
+              <motion.div
+                key={pkg.id}
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: i * 0.08 }}
+                className={`relative rounded-2xl flex flex-col package-card ${
+                  pkg.highlighted
+                    ? "bg-navy shadow-2xl shadow-navy/20 ring-2 ring-amber/40"
+                    : "bg-white shadow-md shadow-navy/8 border border-navy/8"
+                }`}
+              >
+                {/* Popular badge */}
+                {pkg.highlighted && (
+                  <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-amber text-navy font-outfit font-bold text-xs px-4 py-1 rounded-full whitespace-nowrap">
+                    ⭐ {pkg.tag}
                   </div>
-                  {pkg.tag && (
-                    <span className={`text-xs font-outfit font-medium px-2.5 py-1 rounded-full ${pkg.tagColor}`}>
-                      {pkg.tag}
-                    </span>
-                  )}
-                </div>
-
-                {/* Name + Price */}
-                <h3
-                  className={`font-syne font-bold text-lg mb-1 ${
-                    pkg.highlighted ? "text-krem" : "text-navy"
-                  }`}
-                >
-                  {pkg.name}
-                </h3>
-                <div className="mb-3">
-                  <span
-                    className={`font-syne font-extrabold text-2xl ${
-                      pkg.highlighted ? "text-amber" : "text-navy"
-                    }`}
-                  >
-                    Rp {pkg.price}
-                  </span>
-                  <span
-                    className={`font-outfit text-xs ml-2 ${
-                      pkg.highlighted ? "text-abu-biru" : "text-navy/40"
-                    }`}
-                  >
-                    {pkg.priceNote}
-                  </span>
-                </div>
-
-                <p
-                  className={`font-outfit text-sm leading-relaxed mb-5 ${
-                    pkg.highlighted ? "text-abu-biru" : "text-navy/60"
-                  }`}
-                >
-                  {pkg.desc}
-                </p>
-
-                {/* Features - first 5 always visible */}
-                <ul className="space-y-2.5 mb-4 flex-1">
-                  {pkg.features.slice(0, 5).map((f) => (
-                    <li key={f.text} className="flex items-start gap-2.5">
-                      {f.included ? (
-                        <Check size={15} className="text-teal mt-0.5 flex-shrink-0" />
-                      ) : (
-                        <X size={15} className="text-navy/20 mt-0.5 flex-shrink-0" />
-                      )}
-                      <span
-                        className={`font-outfit text-xs leading-relaxed ${
-                          f.included
-                            ? pkg.highlighted ? "text-krem/80" : "text-navy/80"
-                            : pkg.highlighted ? "text-abu-biru/40" : "text-navy/30"
-                        }`}
-                      >
-                        {f.text}
-                      </span>
-                    </li>
-                  ))}
-
-                  {/* Expandable features */}
-                  <AnimatePresence>
-                    {expanded === pkg.id &&
-                      pkg.features.slice(5).map((f) => (
-                        <motion.li
-                          key={f.text}
-                          initial={{ opacity: 0, height: 0 }}
-                          animate={{ opacity: 1, height: "auto" }}
-                          exit={{ opacity: 0, height: 0 }}
-                          transition={{ duration: 0.2 }}
-                          className="flex items-start gap-2.5 overflow-hidden"
-                        >
-                          {f.included ? (
-                            <Check size={15} className="text-teal mt-0.5 flex-shrink-0" />
-                          ) : (
-                            <X size={15} className="text-navy/20 mt-0.5 flex-shrink-0" />
-                          )}
-                          <span
-                            className={`font-outfit text-xs leading-relaxed ${
-                              f.included
-                                ? pkg.highlighted ? "text-krem/80" : "text-navy/80"
-                                : pkg.highlighted ? "text-abu-biru/40" : "text-navy/30"
-                            }`}
-                          >
-                            {f.text}
-                          </span>
-                        </motion.li>
-                      ))}
-                  </AnimatePresence>
-                </ul>
-
-                {/* Show more toggle */}
-                {pkg.features.length > 5 && (
-                  <button
-                    onClick={() => setExpanded(expanded === pkg.id ? null : pkg.id)}
-                    className={`font-outfit text-xs font-medium mb-4 text-left hover:underline ${
-                      pkg.highlighted ? "text-amber" : "text-teal"
-                    }`}
-                  >
-                    {expanded === pkg.id ? "Sembunyikan ↑" : `+${pkg.features.length - 5} fitur lainnya ↓`}
-                  </button>
                 )}
 
-                {/* Best for */}
-                <div
-                  className={`text-xs font-outfit rounded-lg px-3 py-2 mb-5 ${
-                    pkg.highlighted ? "bg-white/5 text-abu-biru" : "bg-navy/4 text-navy/50"
-                  }`}
-                >
-                  <span className="font-medium">Cocok untuk:</span> {pkg.bestFor}
-                </div>
+                <div className="p-6 flex-1 flex flex-col">
+                  {/* Icon + tag */}
+                  <div className="flex items-start justify-between mb-5">
+                    <div
+                      className={`w-11 h-11 rounded-xl flex items-center justify-center ${
+                        pkg.highlighted ? "bg-amber/20" : "bg-navy/8"
+                      }`}
+                    >
+                      <pkg.icon
+                        size={20}
+                        className={pkg.highlighted ? "text-amber" : "text-navy"}
+                      />
+                    </div>
+                    {pkg.tag && !pkg.highlighted && (
+                      <span className={`text-xs font-outfit font-medium px-2.5 py-1 rounded-full ${pkg.tagColor}`}>
+                        {pkg.tag}
+                      </span>
+                    )}
+                  </div>
 
-                {/* CTA */}
-                <motion.a
-                  href={`https://wa.me/6281357662424?text=Halo%20Raskop%20Digital%2C%20saya%20tertarik%20dengan%20${encodeURIComponent(pkg.name)}%20(Rp%20${pkg.price}).%20Boleh%20kita%20ngobrol%20dulu%3F`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  whileHover={{ scale: 1.03 }}
-                  whileTap={{ scale: 0.97 }}
-                  className={`block text-center font-outfit font-semibold text-sm py-3 rounded-xl transition-all duration-200 ${
-                    pkg.highlighted
-                      ? "bg-amber text-navy hover:bg-amber/90 shadow-lg shadow-amber/20"
-                      : "bg-navy text-krem hover:bg-navy/90"
-                  }`}
-                >
-                  {pkg.ctaLabel}
-                </motion.a>
-              </div>
-            </motion.div>
-          ))}
-        </div>
+                  {/* Name + Price */}
+                  <h3
+                    className={`font-syne font-bold text-lg mb-1 ${
+                      pkg.highlighted ? "text-krem" : "text-navy"
+                    }`}
+                  >
+                    {pkg.name}
+                  </h3>
+                  <div className="mb-3">
+                    <span
+                      className={`font-syne font-extrabold text-2xl ${
+                        pkg.highlighted ? "text-amber" : "text-navy"
+                      }`}
+                    >
+                      Rp {pkg.price}
+                    </span>
+                    <span
+                      className={`font-outfit text-xs ml-2 ${
+                        pkg.highlighted ? "text-abu-biru" : "text-navy/40"
+                      }`}
+                    >
+                      {pkg.priceNote}
+                    </span>
+                  </div>
+
+                  <p
+                    className={`font-outfit text-sm leading-relaxed mb-5 ${
+                      pkg.highlighted ? "text-abu-biru" : "text-navy/60"
+                    }`}
+                  >
+                    {pkg.desc}
+                  </p>
+
+                  {/* Features - first 5 always visible */}
+                  <ul className="space-y-2.5 mb-4 flex-1">
+                    {pkg.features.slice(0, 5).map((f) => (
+                      <li key={f.text} className="flex items-start gap-2.5">
+                        {f.included ? (
+                          <Check size={15} className="text-teal mt-0.5 flex-shrink-0" />
+                        ) : (
+                          <X size={15} className="text-navy/20 mt-0.5 flex-shrink-0" />
+                        )}
+                        <span
+                          className={`font-outfit text-xs leading-relaxed ${
+                            f.included
+                              ? pkg.highlighted ? "text-krem/80" : "text-navy/80"
+                              : pkg.highlighted ? "text-abu-biru/40" : "text-navy/30"
+                          }`}
+                        >
+                          {f.text}
+                        </span>
+                      </li>
+                    ))}
+
+                    {/* Expandable features */}
+                    <AnimatePresence>
+                      {expanded === pkg.id &&
+                        pkg.features.slice(5).map((f) => (
+                          <motion.li
+                            key={f.text}
+                            initial={{ opacity: 0, height: 0 }}
+                            animate={{ opacity: 1, height: "auto" }}
+                            exit={{ opacity: 0, height: 0 }}
+                            transition={{ duration: 0.2 }}
+                            className="flex items-start gap-2.5 overflow-hidden"
+                          >
+                            {f.included ? (
+                              <Check size={15} className="text-teal mt-0.5 flex-shrink-0" />
+                            ) : (
+                              <X size={15} className="text-navy/20 mt-0.5 flex-shrink-0" />
+                            )}
+                            <span
+                              className={`font-outfit text-xs leading-relaxed ${
+                                f.included
+                                  ? pkg.highlighted ? "text-krem/80" : "text-navy/80"
+                                  : pkg.highlighted ? "text-abu-biru/40" : "text-navy/30"
+                              }`}
+                            >
+                              {f.text}
+                            </span>
+                          </motion.li>
+                        ))}
+                    </AnimatePresence>
+                  </ul>
+
+                  {/* Show more toggle */}
+                  {pkg.features.length > 5 && (
+                    <button
+                      onClick={() => setExpanded(expanded === pkg.id ? null : pkg.id)}
+                      className={`font-outfit text-xs font-medium mb-4 text-left hover:underline ${
+                        pkg.highlighted ? "text-amber" : "text-teal"
+                      }`}
+                    >
+                      {expanded === pkg.id ? "Sembunyikan ↑" : `+${pkg.features.length - 5} fitur lainnya ↓`}
+                    </button>
+                  )}
+
+                  {/* Best for */}
+                  <div
+                    className={`text-xs font-outfit rounded-lg px-3 py-2 mb-5 ${
+                      pkg.highlighted ? "bg-white/5 text-abu-biru" : "bg-navy/4 text-navy/50"
+                    }`}
+                  >
+                    <span className="font-medium">Cocok untuk:</span> {pkg.bestFor}
+                  </div>
+
+                  {/* CTA */}
+                  <motion.a
+                    href={`https://wa.me/6281357662424?text=Halo%20Raskop%20Digital%2C%20saya%20tertarik%20dengan%20${encodeURIComponent(pkg.name)}%20(Rp%20${pkg.price}).%20Boleh%20kita%20ngobrol%20dulu%3F`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    whileHover={{ scale: 1.03 }}
+                    whileTap={{ scale: 0.97 }}
+                    className={`block text-center font-outfit font-semibold text-sm py-3 rounded-xl transition-all duration-200 ${
+                      pkg.highlighted
+                        ? "bg-amber text-navy hover:bg-amber/90 shadow-lg shadow-amber/20"
+                        : "bg-navy text-krem hover:bg-navy/90"
+                    }`}
+                  >
+                    {pkg.ctaLabel}
+                  </motion.a>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </AnimatePresence>
 
         {/* Bottom note */}
         <motion.p
