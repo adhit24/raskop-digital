@@ -372,22 +372,20 @@ export default function Packages() {
                   <div className="mb-3">
                     {pkg.promoPrice ? (
                       <>
-                        <div className="flex items-center gap-2 mb-0.5">
-                          <span
-                            className={`font-syne font-extrabold text-2xl ${
-                              pkg.highlighted ? "text-amber" : "text-navy"
-                            }`}
-                          >
-                            Rp {pkg.promoPrice}
-                          </span>
-                          <span
-                            className={`font-outfit text-xs line-through ${
-                              pkg.highlighted ? "text-abu-biru/60" : "text-navy/35"
-                            }`}
-                          >
-                            Rp {pkg.price}
-                          </span>
-                        </div>
+                        <span
+                          className={`font-outfit text-xs line-through block mb-0.5 ${
+                            pkg.highlighted ? "text-abu-biru/60" : "text-navy/35"
+                          }`}
+                        >
+                          Rp {pkg.price}
+                        </span>
+                        <span
+                          className={`font-syne font-extrabold text-2xl block mb-1.5 ${
+                            pkg.highlighted ? "text-amber" : "text-navy"
+                          }`}
+                        >
+                          Rp {pkg.promoPrice}
+                        </span>
                         <span className="inline-flex items-center gap-1 bg-red-500/10 text-red-500 font-outfit font-semibold text-[10px] px-2 py-0.5 rounded-full">
                           🔥 Promo s/d 31 Mei 2026
                         </span>
