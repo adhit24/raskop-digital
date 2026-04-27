@@ -149,7 +149,7 @@ export default function Testimonials() {
               ))}
             </div>
             <span className="font-syne font-bold text-navy text-sm">5.0</span>
-            <span className="font-outfit text-sm text-abu-biru">dari 50+ ulasan klien</span>
+            <span className="font-outfit text-sm text-abu-biru">dari 27+ ulasan klien</span>
           </div>
         </motion.div>
       </div>
