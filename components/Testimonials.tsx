@@ -173,7 +173,7 @@ export default function Testimonials() {
                   <img
                     src={client.src}
                     alt={client.name}
-                    className="object-contain h-8 w-auto max-w-[96px] grayscale group-hover:grayscale-0 transition-all duration-300 opacity-60 group-hover:opacity-100"
+                    className="object-contain h-10 w-auto max-w-[100px]"
                   />
                 </div>
               ))}
