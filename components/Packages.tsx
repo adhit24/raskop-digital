@@ -387,7 +387,7 @@ export default function Packages() {
                           Rp {pkg.promoPrice}
                         </span>
                         <span className="inline-flex items-center gap-1 bg-red-500/10 text-red-500 font-outfit font-semibold text-[10px] px-2 py-0.5 rounded-full">
-                          🔥 Promo s/d 31 Mei 2026
+                          🔥 Promo s/d 30 April 2026
                         </span>
                       </>
                     ) : (
