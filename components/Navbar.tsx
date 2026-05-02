@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useScroll } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
 const navLinks = [
@@ -15,6 +15,7 @@ const navLinks = [
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const { scrollYProgress } = useScroll();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60);
@@ -34,13 +35,13 @@ export default function Navbar() {
         initial={{ y: -80, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 relative ${
           scrolled
-            ? "bg-navy/90 backdrop-blur-md shadow-lg shadow-navy/20"
-            : "bg-transparent"
+            ? "bg-navy shadow-lg shadow-navy/25"
+            : "bg-navy"
         }`}
       >
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 h-16 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 h-[84px] md:h-[92px] flex items-center justify-between">
           {/* Logo */}
           <motion.a
             href="#"
@@ -49,14 +50,14 @@ export default function Navbar() {
             whileHover={{ scale: 1.02 }}
           >
             <Image
-              src="/logo.png"
-              alt="Raskop Digital Studio"
-              width={40}
-              height={40}
-              className="object-contain"
+              src="/logo_kinaryaloka.png"
+              alt="KINARYALOKA Digital Studio"
+              width={80}
+              height={80}
+              className="object-contain w-[72px] h-[72px] md:w-[80px] md:h-[80px]"
             />
             <span className="font-syne font-bold text-white text-lg leading-none">
-              Raskop<span className="text-amber">.</span>Digital
+              KINARYALOKA<span className="text-amber">.</span>Digital
             </span>
           </motion.a>
 
@@ -76,7 +77,7 @@ export default function Navbar() {
           {/* CTA */}
           <div className="hidden md:flex items-center gap-4">
             <motion.a
-              href="https://wa.me/6281357662424?text=Halo%20Raskop%20Digital%2C%20saya%20ingin%20ngobrol%20dulu%20soal%20kebutuhan%20digital%20saya."
+              href="https://wa.me/6281357662424?text=Halo%20KINARYALOKA%20Digital%20Studio%2C%20saya%20ingin%20ngobrol%20dulu%20soal%20kebutuhan%20digital%20saya."
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ scale: 1.04 }}
@@ -106,6 +107,11 @@ export default function Navbar() {
             </AnimatePresence>
           </button>
         </div>
+
+        <motion.div
+          style={{ scaleX: scrollYProgress }}
+          className="absolute bottom-0 left-0 right-0 h-px origin-left bg-gradient-to-r from-amber via-teal to-amber opacity-80"
+        />
       </motion.header>
 
       {/* Mobile Menu */}
@@ -134,7 +140,7 @@ export default function Navbar() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: navLinks.length * 0.08 }}
-              href="https://wa.me/6281357662424?text=Halo%20Raskop%20Digital%2C%20saya%20ingin%20ngobrol%20dulu%20soal%20kebutuhan%20digital%20saya."
+              href="https://wa.me/6281357662424?text=Halo%20KINARYALOKA%20Digital%20Studio%2C%20saya%20ingin%20ngobrol%20dulu%20soal%20kebutuhan%20digital%20saya."
               target="_blank"
               rel="noopener noreferrer"
               className="mt-4 bg-amber text-navy font-outfit font-semibold text-lg px-8 py-3 rounded-full"

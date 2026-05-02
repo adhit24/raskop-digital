@@ -28,14 +28,14 @@ export default function Footer() {
           {/* Brand */}
           <div className="flex items-center gap-2.5">
             <Image
-              src="/logo.png"
-              alt="Raskop Digital Studio"
+              src="/logo_kinaryaloka.png"
+              alt="KINARYALOKA Digital Studio"
               width={36}
               height={36}
               className="object-contain"
             />
             <span className="font-syne font-bold text-white text-base">
-              Raskop<span className="text-amber">.</span>Digital
+              KINARYALOKA<span className="text-amber">.</span>Digital
             </span>
           </div>
 
@@ -59,7 +59,7 @@ export default function Footer() {
           {/* Copyright + back to top */}
           <div className="flex items-center gap-3">
             <p className="font-outfit text-xs text-abu-biru/50">
-              © {new Date().getFullYear()} Raskop Digital
+              © {new Date().getFullYear()} KINARYALOKA Digital Studio
             </p>
             <motion.button
               onClick={scrollToTop}

@@ -24,7 +24,7 @@ function useCountUp(target: number, duration: number, started: boolean) {
 const stats = [
   {
     icon: Users,
-    target: 27,
+    target: 13,
     suffix: "+",
     label: "Klien Terlayani",
     desc: "Dari berbagai jenis bisnis & industri",
@@ -51,7 +51,7 @@ const stats = [
   },
   {
     icon: Briefcase,
-    target: 12,
+    target: 7,
     suffix: "+",
     label: "Jenis Industri",
     desc: "Dari kuliner, kesehatan, hingga kreatif",

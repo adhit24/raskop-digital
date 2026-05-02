@@ -17,7 +17,7 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  title: "Raskop Digital — Solusi Digital yang Nyata",
+  title: "KINARYALOKA Digital Studio — Solusi Digital yang Nyata",
   description:
     "Membantu pelaku UMKM bertransformasi digital — rapi, jelas, dan bisa dipakai sehari-hari. Dari sistem reservasi simpel hingga full digital package.",
   keywords: [
@@ -26,11 +26,11 @@ export const metadata: Metadata = {
     "UMKM digital",
     "website bisnis",
     "jasa web",
-    "Raskop Digital",
+    "KINARYALOKA Digital Studio",
   ],
-  authors: [{ name: "Raskop Digital", url: "https://raskopdigital.com" }],
+  authors: [{ name: "KINARYALOKA Digital Studio", url: "https://kinaryalokadigitalstudio.com" }],
   openGraph: {
-    title: "Raskop Digital — Solusi Digital yang Nyata",
+    title: "KINARYALOKA Digital Studio — Solusi Digital yang Nyata",
     description:
       "Partner digital UMKM — dari sistem reservasi hingga full branding. Rapi, jelas, dan kepakai.",
     type: "website",

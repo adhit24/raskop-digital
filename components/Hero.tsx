@@ -5,7 +5,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowDown, CheckCircle, Star, Users } from "lucide-react";
 
 const floatingBadges = [
-  { icon: Users, value: "27+", label: "Klien Aktif", delay: 0.8, x: "right-8 top-1/3", mobileX: "right-4 top-1/3" },
+  { icon: Users, value: "13+", label: "Klien Aktif", delay: 0.8, x: "right-8 top-1/3", mobileX: "right-4 top-1/3" },
   { icon: Star, value: "98%", label: "Kepuasan Klien", delay: 1.0, x: "right-8 bottom-1/3", mobileX: "right-4 bottom-1/3" },
 ];
 
@@ -109,7 +109,7 @@ export default function Hero() {
             transition={{ duration: 0.7, delay: 0.7 }}
             className="font-outfit text-base sm:text-lg text-abu-biru leading-relaxed mb-7 sm:mb-10 max-w-xl"
           >
-            Raskop Digital hadir untuk UMKM yang sudah siap — kami bantu
+            KINARYALOKA Digital Studio hadir untuk UMKM yang sudah siap — kami bantu
             terjemahkan cara bisnis kamu jalan ke dalam sistem digital yang{" "}
             <span className="text-krem font-medium">rapi, jelas, dan kepakai</span>.
           </motion.p>
@@ -122,7 +122,7 @@ export default function Hero() {
             className="flex flex-col sm:flex-row gap-3 sm:gap-4"
           >
             <motion.a
-              href="https://wa.me/6281357662424?text=Halo%20Raskop%20Digital%2C%20saya%20ingin%20ngobrol%20dulu%20soal%20kebutuhan%20digital%20saya."
+              href="https://wa.me/6281357662424?text=Halo%20KINARYALOKA%20Digital%20Studio%2C%20saya%20ingin%20ngobrol%20dulu%20soal%20kebutuhan%20digital%20saya."
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ scale: 1.04, boxShadow: "0 0 32px rgba(232,135,74,0.3)" }}

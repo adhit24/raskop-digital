@@ -40,7 +40,7 @@ const testimonials = [
     role: "Owner Klinik Kecantikan Aura",
     location: "Yogyakarta",
     rating: 5,
-    text: "Awalnya skeptis — banyak vendor yang janji manis tapi hasilnya biasa saja. Raskop Digital beda. Mereka benar-benar pelajari dulu cara klinik saya berjalan sebelum bikin sistemnya. Sekarang operasional jauh lebih teratur.",
+    text: "Awalnya skeptis — banyak vendor yang janji manis tapi hasilnya biasa saja. KINARYALOKA Digital Studio beda. Mereka benar-benar pelajari dulu cara klinik saya berjalan sebelum bikin sistemnya. Sekarang operasional jauh lebih teratur.",
     package: "Full Digital Package",
     initial: "D",
     color: "bg-amber",
@@ -149,7 +149,7 @@ export default function Testimonials() {
               ))}
             </div>
             <span className="font-syne font-bold text-navy text-sm">5.0</span>
-            <span className="font-outfit text-sm text-abu-biru">dari 27+ ulasan klien</span>
+            <span className="font-outfit text-sm text-abu-biru">dari 13+ ulasan klien</span>
           </div>
         </motion.div>
 

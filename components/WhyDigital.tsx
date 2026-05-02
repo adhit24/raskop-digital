@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, useScroll } from "framer-motion";
 import { TrendingUp, Globe, Smartphone, BarChart3 } from "lucide-react";
 
 const globalStats = [
@@ -67,6 +67,10 @@ export default function WhyDigital() {
   const timelineRef = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-80px" });
   const timelineInView = useInView(timelineRef, { once: true, margin: "-80px" });
+  const { scrollYProgress } = useScroll({
+    target: timelineRef,
+    offset: ["start end", "end start"],
+  });
 
   return (
     <section id="mengapa-digital" className="bg-navy py-16 lg:py-32 relative overflow-hidden">
@@ -148,7 +152,11 @@ export default function WhyDigital() {
 
           <div className="relative">
             {/* Timeline line */}
-            <div className="absolute left-3 sm:left-4 lg:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-teal/50 via-amber/30 to-transparent" />
+            <div className="absolute left-3 sm:left-4 lg:left-1/2 top-0 bottom-0 w-px bg-white/10" />
+            <motion.div
+              style={{ scaleY: scrollYProgress }}
+              className="absolute left-3 sm:left-4 lg:left-1/2 top-0 bottom-0 w-px origin-top bg-gradient-to-b from-teal/70 via-amber/50 to-transparent"
+            />
 
             <div className="space-y-8">
               {insights.map((item, i) => (

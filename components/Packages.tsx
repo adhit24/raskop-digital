@@ -17,7 +17,6 @@ type Package = {
   tagColor?: string;
   name: string;
   price: string;
-  promoPrice?: string;
   priceNote: string;
   desc: string;
   features: Feature[];
@@ -33,7 +32,7 @@ const reservasiPackages: Package[] = [
     tag: "Entry Level",
     tagColor: "bg-teal/20 text-teal",
     name: "Paket Reservasi",
-    price: "1.500.000",
+    price: "2.500.000",
     priceNote: "One-time payment",
     desc: "Sistem booking online siap pakai — tanpa perlu website. Ideal untuk bisnis layanan yang masih pakai manual.",
     features: [
@@ -58,7 +57,7 @@ const reservasiPackages: Package[] = [
     tag: "Populer",
     tagColor: "bg-teal/20 text-teal",
     name: "Web + Reservasi",
-    price: "3.000.000",
+    price: "5.000.000",
     priceNote: "One-time payment",
     desc: "Website profesional lengkap dengan sistem booking simpel. Bisnis kamu terlihat serius di mata pelanggan.",
     features: [
@@ -83,7 +82,7 @@ const reservasiPackages: Package[] = [
     tag: "Paling Banyak Dipilih",
     tagColor: "bg-amber/20 text-amber",
     name: "Web + Reservasi Pro",
-    price: "5.000.000",
+    price: "8.000.000",
     priceNote: "One-time payment",
     desc: "Web design multi-halaman dengan sistem reservasi bertenaga database. Data pelanggan tersimpan rapi, bisa diakses kapan saja.",
     features: [
@@ -108,7 +107,7 @@ const reservasiPackages: Package[] = [
     tag: "Full Package",
     tagColor: "bg-amber/20 text-amber",
     name: "Full Digital Package",
-    price: "8.500.000",
+    price: "12.000.000",
     priceNote: "One-time payment",
     desc: "Transformasi digital menyeluruh — dari sistem, website, hingga identitas visual dan strategi konten.",
     features: [
@@ -136,8 +135,7 @@ const ecommercePackages: Package[] = [
     tag: "Entry Level",
     tagColor: "bg-teal/20 text-teal",
     name: "Katalog Digital",
-    price: "2.000.000",
-    promoPrice: "1.500.000",
+    price: "2.500.000",
     priceNote: "One-time payment",
     desc: "Website katalog produk online — pelanggan lihat produk & pesan langsung via WhatsApp. Tanpa ribet payment gateway.",
     features: [
@@ -162,8 +160,7 @@ const ecommercePackages: Package[] = [
     tag: "Populer",
     tagColor: "bg-teal/20 text-teal",
     name: "Toko Online",
-    price: "4.500.000",
-    promoPrice: "3.000.000",
+    price: "5.000.000",
     priceNote: "One-time payment",
     desc: "Toko online lengkap dengan keranjang belanja & payment gateway. Pelanggan bisa checkout langsung di website kamu.",
     features: [
@@ -188,8 +185,7 @@ const ecommercePackages: Package[] = [
     tag: "Paling Lengkap",
     tagColor: "bg-amber/20 text-amber",
     name: "E-Commerce Pro",
-    price: "7.500.000",
-    promoPrice: "6.000.000",
+    price: "8.000.000",
     priceNote: "One-time payment",
     desc: "Platform jual beli penuh fitur — inventori, multi-varian produk, voucher diskon, hingga laporan penjualan real-time.",
     features: [
@@ -214,8 +210,7 @@ const ecommercePackages: Package[] = [
     tag: "Full Package",
     tagColor: "bg-amber/20 text-amber",
     name: "E-Commerce Full Brand",
-    price: "11.000.000",
-    promoPrice: "8.500.000",
+    price: "15.000.000",
     priceNote: "One-time payment",
     desc: "E-commerce profesional + identitas brand lengkap. Dari toko online canggih hingga visual brand yang siap bersaing.",
     features: [
@@ -268,7 +263,7 @@ export default function Packages() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="font-syne font-extrabold text-3xl sm:text-4xl lg:text-5xl text-navy mt-3 mb-4 leading-tight"
           >
-            Paket Harga Raskop Digital
+            Paket Harga KINARYALOKA Digital Studio
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -370,44 +365,20 @@ export default function Packages() {
                     {pkg.name}
                   </h3>
                   <div className="mb-3">
-                    {pkg.promoPrice ? (
-                      <>
-                        <span
-                          className={`font-outfit text-xs line-through block mb-0.5 ${
-                            pkg.highlighted ? "text-abu-biru/60" : "text-navy/35"
-                          }`}
-                        >
-                          Rp {pkg.price}
-                        </span>
-                        <span
-                          className={`font-syne font-extrabold text-2xl block mb-1.5 ${
-                            pkg.highlighted ? "text-amber" : "text-navy"
-                          }`}
-                        >
-                          Rp {pkg.promoPrice}
-                        </span>
-                        <span className="inline-flex items-center gap-1 bg-red-500/10 text-red-500 font-outfit font-semibold text-[10px] px-2 py-0.5 rounded-full">
-                          🔥 Promo s/d 30 April 2026
-                        </span>
-                      </>
-                    ) : (
-                      <>
-                        <span
-                          className={`font-syne font-extrabold text-2xl ${
-                            pkg.highlighted ? "text-amber" : "text-navy"
-                          }`}
-                        >
-                          Rp {pkg.price}
-                        </span>
-                        <span
-                          className={`font-outfit text-xs ml-2 ${
-                            pkg.highlighted ? "text-abu-biru" : "text-navy/40"
-                          }`}
-                        >
-                          {pkg.priceNote}
-                        </span>
-                      </>
-                    )}
+                    <span
+                      className={`font-syne font-extrabold text-2xl ${
+                        pkg.highlighted ? "text-amber" : "text-navy"
+                      }`}
+                    >
+                      Rp {pkg.price}
+                    </span>
+                    <span
+                      className={`font-outfit text-xs ml-2 ${
+                        pkg.highlighted ? "text-abu-biru" : "text-navy/40"
+                      }`}
+                    >
+                      {pkg.priceNote}
+                    </span>
                   </div>
 
                   <p
@@ -493,7 +464,7 @@ export default function Packages() {
 
                   {/* CTA */}
                   <motion.a
-                    href={`https://wa.me/6281357662424?text=Halo%20Raskop%20Digital%2C%20saya%20tertarik%20dengan%20${encodeURIComponent(pkg.name)}%20(Rp%20${pkg.promoPrice ?? pkg.price}).%20Boleh%20kita%20ngobrol%20dulu%3F`}
+                    href={`https://wa.me/6281357662424?text=Halo%20KINARYALOKA%20Digital%20Studio%2C%20saya%20tertarik%20dengan%20${encodeURIComponent(pkg.name)}%20(Rp%20${pkg.price}).%20Boleh%20kita%20ngobrol%20dulu%3F`}
                     target="_blank"
                     rel="noopener noreferrer"
                     whileHover={{ scale: 1.03 }}

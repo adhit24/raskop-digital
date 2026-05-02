@@ -63,7 +63,7 @@ export default function ContactCTA() {
               className="flex flex-col gap-3 sm:flex-row sm:gap-4 mb-8 sm:mb-10"
             >
               <motion.a
-                href="https://wa.me/6281357662424?text=Halo%20Raskop%20Digital%2C%20saya%20ingin%20ngobrol%20dulu%20soal%20kebutuhan%20digital%20saya."
+                href="https://wa.me/6281357662424?text=Halo%20KINARYALOKA%20Digital%20Studio%2C%20saya%20ingin%20ngobrol%20dulu%20soal%20kebutuhan%20digital%20saya."
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.04, boxShadow: "0 0 40px rgba(232,135,74,0.3)" }}
@@ -85,7 +85,7 @@ export default function ContactCTA() {
               <p className="font-syne font-bold text-krem/60 text-sm italic">
                 Digital bukan pilihan, ini kebutuhan.
               </p>
-              <p className="font-outfit text-xs text-abu-biru mt-1">— Raskop Digital</p>
+              <p className="font-outfit text-xs text-abu-biru mt-1">— KINARYALOKA Digital Studio</p>
             </motion.div>
           </div>
 

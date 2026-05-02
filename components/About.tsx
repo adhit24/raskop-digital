@@ -64,7 +64,7 @@ export default function About() {
                 <span className="text-teal">Partner</span> yang Ngerti Bisnis Kamu.
               </h2>
               <p className="font-outfit text-base lg:text-lg text-navy/70 leading-relaxed mb-5">
-                Raskop Digital lahir dari pemahaman satu hal: kebanyakan UMKM bukan tidak mau
+                KINARYALOKA Digital Studio lahir dari pemahaman satu hal: kebanyakan UMKM bukan tidak mau
                 digital — mereka tidak tahu mulai dari mana, atau sudah coba tapi hasilnya
                 tidak kepakai.
               </p>
@@ -81,7 +81,7 @@ export default function About() {
                   &ldquo;Website itu bukan tujuan akhir, tapi alat biar operasional
                   jadi lebih rapi dan jelas.&rdquo;
                 </p>
-                <p className="font-outfit text-sm text-abu-biru mt-2">— Raskop Digital</p>
+                <p className="font-outfit text-sm text-abu-biru mt-2">— KINARYALOKA Digital Studio</p>
               </div>
             </motion.div>
           </div>
@@ -117,7 +117,7 @@ export default function About() {
           transition={{ duration: 0.6, delay: 0.5 }}
           className="mt-10 lg:mt-16 text-center"
         >
-          <p className="font-outfit text-abu-biru text-sm">@raskopdigital</p>
+          <p className="font-outfit text-abu-biru text-sm">@kinaryalokadigitalstudio</p>
         </motion.div>
       </div>
     </section>
