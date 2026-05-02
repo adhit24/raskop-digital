@@ -20,6 +20,14 @@ export const metadata: Metadata = {
   title: "KINARYALOKA Digital Studio — Solusi Digital yang Nyata",
   description:
     "Membantu pelaku UMKM bertransformasi digital — rapi, jelas, dan bisa dipakai sehari-hari. Dari sistem reservasi simpel hingga full digital package.",
+  icons: {
+    icon: [
+      { url: "/logo_kinaryaloka.png", type: "image/png" },
+    ],
+    apple: [
+      { url: "/logo_kinaryaloka.png", type: "image/png" },
+    ],
+  },
   keywords: [
     "web design",
     "sistem reservasi",
