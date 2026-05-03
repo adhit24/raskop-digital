@@ -50,15 +50,19 @@ export default function Navbar() {
             whileHover={{ scale: 1.02 }}
           >
             <Image
-              src="/logo_kinaryaloka.png"
-              alt="KINARYALOKA Digital Studio"
-              width={80}
-              height={80}
-              className="object-contain w-[72px] h-[72px] md:w-[80px] md:h-[80px]"
+              src="/Logo_kinaryaloka.png"
+              alt="KINARYALOKA"
+              width={72}
+              height={72}
+              className="object-contain w-[68px] h-[68px] md:w-[72px] md:h-[72px]"
             />
-            <span className="font-syne font-bold text-white text-lg leading-none">
-              KINARYALOKA<span className="text-amber">.</span>Digital
-            </span>
+            <Image
+              src="/kinaryaloka font.png"
+              alt="KINARYALOKA Digital"
+              width={140}
+              height={40}
+              className="object-contain h-8 md:h-9 w-auto"
+            />
           </motion.a>
 
           {/* Desktop Nav */}

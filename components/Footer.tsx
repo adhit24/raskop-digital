@@ -28,15 +28,19 @@ export default function Footer() {
           {/* Brand */}
           <div className="flex items-center gap-2.5">
             <Image
-              src="/logo_kinaryaloka.png"
-              alt="KINARYALOKA Digital Studio"
+              src="/Logo_kinaryaloka.png"
+              alt="KINARYALOKA"
               width={36}
               height={36}
               className="object-contain"
             />
-            <span className="font-syne font-bold text-white text-base">
-              KINARYALOKA<span className="text-amber">.</span>Digital
-            </span>
+            <Image
+              src="/kinaryaloka font.png"
+              alt="KINARYALOKA Digital"
+              width={100}
+              height={28}
+              className="object-contain h-6 w-auto"
+            />
           </div>
 
           {/* Contact links */}
