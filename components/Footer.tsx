@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { motion } from "framer-motion";
 import { MessageCircle, Mail, ArrowUp } from "lucide-react";
 
@@ -27,19 +26,15 @@ export default function Footer() {
 
           {/* Brand */}
           <div className="flex items-center gap-2.5">
-            <Image
+            <img
               src="/Logo_kinaryaloka.png"
               alt="KINARYALOKA"
-              width={36}
-              height={36}
-              className="object-contain"
+              className="object-contain w-9 h-9"
             />
-            <Image
+            <img
               src="/kinaryaloka-font.png"
               alt="KINARYALOKA Digital"
-              width={100}
-              height={28}
-              className="object-contain h-6 w-auto"
+              className="object-contain h-6 w-auto max-w-[100px]"
             />
           </div>
 

@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Image from "next/image";
 import { motion, AnimatePresence, useScroll } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
@@ -49,19 +48,15 @@ export default function Navbar() {
             className="flex items-center gap-2"
             whileHover={{ scale: 1.02 }}
           >
-            <Image
+            <img
               src="/Logo_kinaryaloka.png"
               alt="KINARYALOKA"
-              width={72}
-              height={72}
               className="object-contain w-[68px] h-[68px] md:w-[72px] md:h-[72px]"
             />
-            <Image
+            <img
               src="/kinaryaloka-font.png"
               alt="KINARYALOKA Digital"
-              width={140}
-              height={40}
-              className="object-contain h-8 md:h-9 w-auto"
+              className="object-contain h-8 md:h-9 w-auto max-w-[140px]"
             />
           </motion.a>
 
