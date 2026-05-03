@@ -35,7 +35,7 @@ export default function Footer() {
               className="object-contain"
             />
             <Image
-              src="/kinaryaloka font.png"
+              src="/kinaryaloka-font.png"
               alt="KINARYALOKA Digital"
               width={100}
               height={28}

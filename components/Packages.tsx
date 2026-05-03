@@ -5,6 +5,7 @@ import { motion, useInView, AnimatePresence } from "framer-motion";
 import {
   Check, X, Zap, Layout, Database, Star,
   ShoppingBag, ShoppingCart, Store, Rocket,
+  Palette, PenTool, FileText, Sparkles,
   type LucideIcon,
 } from "lucide-react";
 
@@ -231,7 +232,85 @@ const ecommercePackages: Package[] = [
   },
 ];
 
-type Category = "reservasi" | "ecommerce";
+const brandingPackages: Package[] = [
+  {
+    id: "branding-basic",
+    icon: Palette,
+    tag: "Brand Starter",
+    tagColor: "bg-teal/20 text-teal",
+    name: "Paket Branding",
+    price: "1.500.000",
+    priceNote: "One-time payment",
+    desc: "Identitas brand lengkap untuk membuat bisnismu profesional dan mudah diingat — dari logo hingga copywriting.",
+    features: [
+      { text: "Desain logo (3 konsep, 2x revisi)", included: true },
+      { text: "Color palette & typography system", included: true },
+      { text: "Copywriting brand (tagline + brand story)", included: true },
+      { text: "Business card design (digital)", included: true },
+      { text: "Social media kit (5 template feed)", included: true },
+      { text: "Brand guidelines (PDF)", included: true },
+      { text: "Stationery design (letterhead, invoice)", included: false },
+      { text: "Packaging design", included: false },
+      { text: "Website/Landing page design", included: false },
+      { text: "Revisi unlimited", included: false },
+    ],
+    bestFor: "UMKM, personal brand, startup, toko online baru, content creator",
+    ctaLabel: "Pilih Paket Ini",
+    highlighted: false,
+  },
+  {
+    id: "branding-plus",
+    icon: PenTool,
+    tag: "Populer",
+    tagColor: "bg-amber/20 text-amber",
+    name: "Branding + Copywriting",
+    price: "2.500.000",
+    priceNote: "One-time payment",
+    desc: "Branding lengkap dengan copywriting profesional untuk website, social media, dan marketing material.",
+    features: [
+      { text: "Semua fitur Paket Branding", included: true },
+      { text: "Desain logo (5 konsep, unlimited revisi)", included: true },
+      { text: "Website copywriting (5 halaman)", included: true },
+      { text: "Social media copy (15 caption templates)", included: true },
+      { text: "Email marketing templates (3 desain)", included: true },
+      { text: "Stationery design lengkap", included: true },
+      { text: "Packaging label design", included: true },
+      { text: "Brand voice guidelines", included: true },
+      { text: "SEO-friendly product description (10 produk)", included: true },
+      { text: "Support 1 bulan", included: true },
+    ],
+    bestFor: "Bisnis yang mau launch, rebranding, toko online butuh deskripsi produk profesional",
+    ctaLabel: "Pilih Paket Ini",
+    highlighted: true,
+  },
+  {
+    id: "branding-full",
+    icon: Sparkles,
+    tag: "Full Package",
+    tagColor: "bg-amber/20 text-amber",
+    name: "Branding Complete",
+    price: "4.500.000",
+    priceNote: "One-time payment",
+    desc: "Solusi branding end-to-end: visual identity, semua copywriting, dan marketing kit siap pakai.",
+    features: [
+      { text: "Semua fitur Branding + Copywriting", included: true },
+      { text: "Packaging & label design lengkap", included: true },
+      { text: "Social media kit (20 template)", included: true },
+      { text: "Instagram Highlight covers (5 desain)", included: true },
+      { text: "Ads copywriting (Google + Meta)", included: true },
+      { text: "Landing page copy + wireframe", included: true },
+      { text: "Brand strategy consultation", included: true },
+      { text: "Product photography direction", included: true },
+      { text: "Print-ready files (PDF, AI, PNG)", included: true },
+      { text: "Support 2 bulan", included: true },
+    ],
+    bestFor: "Brand serius, yang mau identitas kuat di semua touchpoint",
+    ctaLabel: "Pilih Paket Ini",
+    highlighted: false,
+  },
+];
+
+type Category = "reservasi" | "ecommerce" | "branding";
 
 export default function Packages() {
   const ref = useRef(null);
@@ -239,7 +318,10 @@ export default function Packages() {
   const [expanded, setExpanded] = useState<string | null>(null);
   const [category, setCategory] = useState<Category>("reservasi");
 
-  const activePackages = category === "reservasi" ? reservasiPackages : ecommercePackages;
+  const activePackages =
+    category === "reservasi" ? reservasiPackages :
+    category === "ecommerce" ? ecommercePackages :
+    brandingPackages;
 
   return (
     <section id="paket" className="bg-krem py-16 lg:py-32 relative overflow-hidden">
@@ -292,7 +374,7 @@ export default function Packages() {
                   : "text-navy/50 hover:text-navy"
               }`}
             >
-              📅 Reservasi & Booking
+              🎨 Webdesign
             </button>
             <button
               onClick={() => { setCategory("ecommerce"); setExpanded(null); }}
@@ -302,7 +384,17 @@ export default function Packages() {
                   : "text-navy/50 hover:text-navy"
               }`}
             >
-              🛍️ E-Commerce & Toko Online
+              🛍️ E-Commerce
+            </button>
+            <button
+              onClick={() => { setCategory("branding"); setExpanded(null); }}
+              className={`relative font-outfit font-semibold text-sm px-5 py-2.5 rounded-xl transition-all duration-300 ${
+                category === "branding"
+                  ? "bg-navy text-krem shadow-md"
+                  : "text-navy/50 hover:text-navy"
+              }`}
+            >
+              ✨ Branding
             </button>
           </div>
         </motion.div>

@@ -57,7 +57,7 @@ export default function Navbar() {
               className="object-contain w-[68px] h-[68px] md:w-[72px] md:h-[72px]"
             />
             <Image
-              src="/kinaryaloka font.png"
+              src="/kinaryaloka-font.png"
               alt="KINARYALOKA Digital"
               width={140}
               height={40}
