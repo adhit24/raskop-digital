@@ -72,7 +72,7 @@ export default function Stats() {
   ];
 
   return (
-    <section id="klien" className="bg-navy py-16 lg:py-32 relative overflow-hidden">
+    <section id="klien" className="bg-krem py-16 lg:py-32 relative overflow-hidden">
       {/* Decorations */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-teal/20 to-transparent" />
@@ -96,7 +96,7 @@ export default function Stats() {
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="font-syne font-extrabold text-3xl sm:text-4xl lg:text-5xl text-krem mt-3 leading-tight"
+            className="font-syne font-extrabold text-3xl sm:text-4xl lg:text-5xl text-navy mt-3 leading-tight"
           >
             Bisnis Nyata, Hasil Nyata.
           </motion.h2>
@@ -111,10 +111,10 @@ export default function Stats() {
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: i * 0.1 + 0.2 }}
               whileHover={{ y: -6, transition: { duration: 0.2 } }}
-              className="relative bg-white/5 border border-white/10 rounded-2xl p-5 sm:p-6 lg:p-8 text-center overflow-hidden group"
+              className="relative bg-white border border-navy/10 rounded-2xl p-5 sm:p-6 lg:p-8 text-center overflow-hidden group shadow-sm shadow-navy/10"
             >
               {/* Hover glow */}
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-b from-white/5 to-transparent rounded-2xl" />
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-b from-navy/5 to-transparent rounded-2xl" />
 
               <div className={`w-12 h-12 ${stat.bg} rounded-xl flex items-center justify-center mx-auto mb-4`}>
                 <stat.icon size={22} className={stat.color} />
@@ -129,7 +129,7 @@ export default function Stats() {
                 </span>
               </div>
 
-              <h3 className="font-syne font-bold text-krem text-sm lg:text-base mb-2">
+              <h3 className="font-syne font-bold text-navy text-sm lg:text-base mb-2">
                 {stat.label}
               </h3>
               <p className="font-outfit text-xs text-abu-biru leading-relaxed hidden sm:block">
