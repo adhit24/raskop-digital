@@ -2,10 +2,12 @@
 
 import { useRef, useState } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 import {
   Check, X, Zap, Layout, Database, Star,
   ShoppingBag, ShoppingCart, Store, Rocket,
   Palette, PenTool, FileText, Sparkles,
+  Lock,
   type LucideIcon,
 } from "lucide-react";
 
@@ -312,6 +314,44 @@ const brandingPackages: Package[] = [
 
 type Category = "reservasi" | "ecommerce" | "branding";
 
+function toIdrK(price: string) {
+  const digits = price.replace(/\D/g, "");
+  if (!digits) return price;
+  return `${Number(digits).toString()}K`;
+}
+
+function getCoverImage(category: Category) {
+  if (category === "branding") return "/Paket Branding.png";
+  return "/Paket Website Design.png";
+}
+
+function getAccent(category: Category) {
+  if (category === "branding") {
+    return {
+      price: "text-blue-800",
+      button: "bg-blue-700 hover:bg-blue-800",
+      detail: "text-blue-700 hover:text-blue-800",
+      ring: "ring-blue-700/20",
+    };
+  }
+
+  if (category === "ecommerce") {
+    return {
+      price: "text-emerald-800",
+      button: "bg-emerald-700 hover:bg-emerald-800",
+      detail: "text-emerald-700 hover:text-emerald-800",
+      ring: "ring-emerald-700/20",
+    };
+  }
+
+  return {
+    price: "text-amber-800",
+    button: "bg-amber-700 hover:bg-amber-800",
+    detail: "text-amber-700 hover:text-amber-800",
+    ring: "ring-amber-700/20",
+  };
+}
+
 export default function Packages() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-80px" });
@@ -322,6 +362,16 @@ export default function Packages() {
     category === "reservasi" ? reservasiPackages :
     category === "ecommerce" ? ecommercePackages :
     brandingPackages;
+
+  const coverImage = getCoverImage(category);
+  const accent = getAccent(category);
+  const featured =
+    category === "reservasi"
+      ? reservasiPackages.find((p) => p.id === "full") ?? null
+      : null;
+
+  const gridPackages =
+    featured ? activePackages.filter((p) => p.id !== featured.id) : activePackages;
 
   return (
     <section id="paket" className="bg-krem py-16 lg:py-32 relative overflow-hidden">
@@ -337,7 +387,7 @@ export default function Packages() {
             transition={{ duration: 0.5 }}
             className="font-outfit text-sm font-medium text-teal uppercase tracking-widest"
           >
-            Pilih Sesuai Kebutuhan
+            Produk Kami
           </motion.span>
           <motion.h2
             initial={{ opacity: 0, y: 30 }}
@@ -345,7 +395,7 @@ export default function Packages() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="font-syne font-extrabold text-3xl sm:text-4xl lg:text-5xl text-navy mt-3 mb-4 leading-tight"
           >
-            Paket Harga KINARYALOKA Digital Studio
+            Pilih Paket Sesuai Kebutuhan
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -353,8 +403,7 @@ export default function Packages() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="font-outfit text-base lg:text-lg text-navy/60 max-w-xl mx-auto"
           >
-            Semua paket sudah termasuk konsultasi awal gratis. Kita ngobrol dulu — baru
-            tentukan paket yang paling sesuai.
+            Semua tombol bisa diklik. Pilih kategori, buka detail, lalu langsung pilih paket.
           </motion.p>
         </div>
 
@@ -365,10 +414,10 @@ export default function Packages() {
           transition={{ duration: 0.5, delay: 0.3 }}
           className="flex justify-center mb-10 lg:mb-14"
         >
-          <div className="inline-flex bg-white border border-navy/10 rounded-2xl p-1.5 shadow-sm gap-1">
+          <div className="inline-flex bg-white border border-navy/10 rounded-full p-1 shadow-sm gap-1">
             <button
               onClick={() => { setCategory("reservasi"); setExpanded(null); }}
-              className={`relative font-outfit font-semibold text-sm px-5 py-2.5 rounded-xl transition-all duration-300 ${
+              className={`relative font-outfit font-semibold text-sm px-5 py-2.5 rounded-full transition-all duration-300 ${
                 category === "reservasi"
                   ? "bg-navy text-krem shadow-md"
                   : "text-navy/50 hover:text-navy"
@@ -378,7 +427,7 @@ export default function Packages() {
             </button>
             <button
               onClick={() => { setCategory("ecommerce"); setExpanded(null); }}
-              className={`relative font-outfit font-semibold text-sm px-5 py-2.5 rounded-xl transition-all duration-300 ${
+              className={`relative font-outfit font-semibold text-sm px-5 py-2.5 rounded-full transition-all duration-300 ${
                 category === "ecommerce"
                   ? "bg-navy text-krem shadow-md"
                   : "text-navy/50 hover:text-navy"
@@ -388,7 +437,7 @@ export default function Packages() {
             </button>
             <button
               onClick={() => { setCategory("branding"); setExpanded(null); }}
-              className={`relative font-outfit font-semibold text-sm px-5 py-2.5 rounded-xl transition-all duration-300 ${
+              className={`relative font-outfit font-semibold text-sm px-5 py-2.5 rounded-full transition-all duration-300 ${
                 category === "branding"
                   ? "bg-navy text-krem shadow-md"
                   : "text-navy/50 hover:text-navy"
@@ -399,6 +448,104 @@ export default function Packages() {
           </div>
         </motion.div>
 
+        {featured && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.15 }}
+            className="mb-8 lg:mb-10"
+          >
+            <div className="bg-white rounded-3xl border border-navy/10 shadow-sm shadow-navy/10 overflow-hidden">
+              <div className="grid grid-cols-1 lg:grid-cols-2">
+                <div className="relative min-h-[260px]">
+                  <Image
+                    src={encodeURI(coverImage)}
+                    alt={featured.name}
+                    fill
+                    sizes="(min-width: 1024px) 50vw, 100vw"
+                    className="object-cover"
+                    priority
+                  />
+                </div>
+                <div className="p-7 sm:p-9 flex flex-col">
+                  <div className="flex items-center justify-between gap-4 mb-3">
+                    <span className="inline-flex items-center rounded-lg bg-red-600 px-3 py-1 text-xs font-outfit font-bold text-white">
+                      Flagship
+                    </span>
+                    <button
+                      type="button"
+                      onClick={() => setExpanded(expanded === featured.id ? null : featured.id)}
+                      className={`font-outfit text-sm font-semibold ${accent.detail}`}
+                    >
+                      Detail ›
+                    </button>
+                  </div>
+
+                  <h3 className="font-syne font-extrabold text-3xl text-navy leading-tight">
+                    {featured.name}
+                  </h3>
+                  <p className="font-outfit text-sm text-navy/60 mt-2 max-w-prose">
+                    {featured.desc}
+                  </p>
+
+                  <div className="mt-6">
+                    <div className="flex items-baseline gap-2">
+                      <span className="font-outfit font-semibold text-navy/50">IDR</span>
+                      <span className={`font-syne font-extrabold text-3xl ${accent.price}`}>
+                        {toIdrK(featured.price)}
+                      </span>
+                    </div>
+                  </div>
+
+                  <motion.a
+                    href={`https://wa.me/6281357662424?text=Halo%20KINARYALOKA%20Digital%20Studio%2C%20saya%20tertarik%20dengan%20${encodeURIComponent(featured.name)}%20(IDR%20${toIdrK(featured.price)}).%20Boleh%20kita%20ngobrol%20dulu%3F`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    className={`mt-7 inline-flex items-center justify-center gap-2 rounded-xl px-6 py-3 font-outfit font-semibold text-white ${accent.button}`}
+                  >
+                    <Lock size={18} className="opacity-95" />
+                    Pilih Paket Ini
+                  </motion.a>
+
+                  <AnimatePresence>
+                    {expanded === featured.id && (
+                      <motion.div
+                        initial={{ opacity: 0, height: 0, marginTop: 0 }}
+                        animate={{ opacity: 1, height: "auto", marginTop: 18 }}
+                        exit={{ opacity: 0, height: 0, marginTop: 0 }}
+                        transition={{ duration: 0.25 }}
+                        className="overflow-hidden"
+                      >
+                        <div className="rounded-2xl bg-navy/5 border border-navy/10 p-5">
+                          <p className="font-outfit text-xs text-navy/55 mb-3">
+                            <span className="font-semibold">Cocok untuk:</span> {featured.bestFor}
+                          </p>
+                          <ul className="space-y-2.5">
+                            {featured.features.map((f) => (
+                              <li key={f.text} className="flex items-start gap-2.5">
+                                {f.included ? (
+                                  <Check size={15} className="text-teal mt-0.5 flex-shrink-0" />
+                                ) : (
+                                  <X size={15} className="text-navy/25 mt-0.5 flex-shrink-0" />
+                                )}
+                                <span className="font-outfit text-xs text-navy/75 leading-relaxed">
+                                  {f.text}
+                                </span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        )}
+
         {/* Cards */}
         <AnimatePresence mode="wait">
           <motion.div
@@ -407,168 +554,105 @@ export default function Packages() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.35 }}
-            className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 sm:gap-6"
+            className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5 sm:gap-6"
           >
-            {activePackages.map((pkg, i) => (
+            {gridPackages.map((pkg, i) => (
               <motion.div
                 key={pkg.id}
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: i * 0.08 }}
-                className={`relative rounded-2xl flex flex-col package-card ${
-                  pkg.highlighted
-                    ? "bg-navy shadow-2xl shadow-navy/20 ring-2 ring-amber/40"
-                    : "bg-white shadow-md shadow-navy/8 border border-navy/8"
+                whileHover={{ y: -6, transition: { duration: 0.2 } }}
+                className={`relative rounded-3xl overflow-hidden bg-white border border-navy/10 shadow-sm shadow-navy/10 ring-1 ${accent.ring} ${
+                  pkg.highlighted ? "ring-2" : ""
                 }`}
               >
-                {/* Popular badge */}
-                {pkg.highlighted && (
-                  <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-amber text-navy font-outfit font-bold text-xs px-4 py-1 rounded-full whitespace-nowrap">
-                    ⭐ {pkg.tag}
-                  </div>
-                )}
-
-                <div className="p-6 flex-1 flex flex-col">
-                  {/* Icon + tag */}
-                  <div className="flex items-start justify-between mb-5">
-                    <div
-                      className={`w-11 h-11 rounded-xl flex items-center justify-center ${
-                        pkg.highlighted ? "bg-amber/20" : "bg-navy/8"
-                      }`}
-                    >
-                      <pkg.icon
-                        size={20}
-                        className={pkg.highlighted ? "text-amber" : "text-navy"}
-                      />
-                    </div>
-                    {pkg.tag && !pkg.highlighted && (
-                      <span className={`text-xs font-outfit font-medium px-2.5 py-1 rounded-full ${pkg.tagColor}`}>
-                        {pkg.tag}
+                <div className="relative h-52">
+                  <Image
+                    src={encodeURI(coverImage)}
+                    alt={pkg.name}
+                    fill
+                    sizes="(min-width: 1280px) 33vw, (min-width: 640px) 50vw, 100vw"
+                    className="object-cover"
+                  />
+                  {pkg.highlighted && (
+                    <div className="absolute top-4 left-4">
+                      <span className="inline-flex items-center rounded-lg bg-red-600 px-3 py-1 text-xs font-outfit font-bold text-white">
+                        Flagship
                       </span>
-                    )}
-                  </div>
-
-                  {/* Name + Price */}
-                  <h3
-                    className={`font-syne font-bold text-lg mb-1 ${
-                      pkg.highlighted ? "text-krem" : "text-navy"
-                    }`}
-                  >
-                    {pkg.name}
-                  </h3>
-                  <div className="mb-3">
-                    <span
-                      className={`font-syne font-extrabold text-2xl ${
-                        pkg.highlighted ? "text-amber" : "text-navy"
-                      }`}
-                    >
-                      Rp {pkg.price}
-                    </span>
-                    <span
-                      className={`font-outfit text-xs ml-2 ${
-                        pkg.highlighted ? "text-abu-biru" : "text-navy/40"
-                      }`}
-                    >
-                      {pkg.priceNote}
-                    </span>
-                  </div>
-
-                  <p
-                    className={`font-outfit text-sm leading-relaxed mb-5 ${
-                      pkg.highlighted ? "text-abu-biru" : "text-navy/60"
-                    }`}
-                  >
-                    {pkg.desc}
-                  </p>
-
-                  {/* Features - first 5 always visible */}
-                  <ul className="space-y-2.5 mb-4 flex-1">
-                    {pkg.features.slice(0, 5).map((f) => (
-                      <li key={f.text} className="flex items-start gap-2.5">
-                        {f.included ? (
-                          <Check size={15} className="text-teal mt-0.5 flex-shrink-0" />
-                        ) : (
-                          <X size={15} className="text-navy/20 mt-0.5 flex-shrink-0" />
-                        )}
-                        <span
-                          className={`font-outfit text-xs leading-relaxed ${
-                            f.included
-                              ? pkg.highlighted ? "text-krem/80" : "text-navy/80"
-                              : pkg.highlighted ? "text-abu-biru/40" : "text-navy/30"
-                          }`}
-                        >
-                          {f.text}
-                        </span>
-                      </li>
-                    ))}
-
-                    {/* Expandable features */}
-                    <AnimatePresence>
-                      {expanded === pkg.id &&
-                        pkg.features.slice(5).map((f) => (
-                          <motion.li
-                            key={f.text}
-                            initial={{ opacity: 0, height: 0 }}
-                            animate={{ opacity: 1, height: "auto" }}
-                            exit={{ opacity: 0, height: 0 }}
-                            transition={{ duration: 0.2 }}
-                            className="flex items-start gap-2.5 overflow-hidden"
-                          >
-                            {f.included ? (
-                              <Check size={15} className="text-teal mt-0.5 flex-shrink-0" />
-                            ) : (
-                              <X size={15} className="text-navy/20 mt-0.5 flex-shrink-0" />
-                            )}
-                            <span
-                              className={`font-outfit text-xs leading-relaxed ${
-                                f.included
-                                  ? pkg.highlighted ? "text-krem/80" : "text-navy/80"
-                                  : pkg.highlighted ? "text-abu-biru/40" : "text-navy/30"
-                              }`}
-                            >
-                              {f.text}
-                            </span>
-                          </motion.li>
-                        ))}
-                    </AnimatePresence>
-                  </ul>
-
-                  {/* Show more toggle */}
-                  {pkg.features.length > 5 && (
-                    <button
-                      onClick={() => setExpanded(expanded === pkg.id ? null : pkg.id)}
-                      className={`font-outfit text-xs font-medium mb-4 text-left hover:underline ${
-                        pkg.highlighted ? "text-amber" : "text-teal"
-                      }`}
-                    >
-                      {expanded === pkg.id ? "Sembunyikan ↑" : `+${pkg.features.length - 5} fitur lainnya ↓`}
-                    </button>
+                    </div>
                   )}
+                </div>
 
-                  {/* Best for */}
-                  <div
-                    className={`text-xs font-outfit rounded-lg px-3 py-2 mb-5 ${
-                      pkg.highlighted ? "bg-white/5 text-abu-biru" : "bg-navy/4 text-navy/50"
-                    }`}
-                  >
-                    <span className="font-medium">Cocok untuk:</span> {pkg.bestFor}
+                <div className="p-6">
+                  <div className="flex items-start justify-between gap-3">
+                    <div>
+                      <h3 className="font-syne font-extrabold text-2xl text-navy leading-tight">
+                        {pkg.name}
+                      </h3>
+                      <p className="font-outfit text-xs text-navy/55 mt-2">
+                        {pkg.desc}
+                      </p>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() => setExpanded(expanded === pkg.id ? null : pkg.id)}
+                      className={`font-outfit text-sm font-semibold ${accent.detail} whitespace-nowrap`}
+                    >
+                      Detail ›
+                    </button>
                   </div>
 
-                  {/* CTA */}
+                  <div className="mt-5 flex items-baseline gap-2">
+                    <span className="font-outfit font-semibold text-navy/50">IDR</span>
+                    <span className={`font-syne font-extrabold text-3xl ${accent.price}`}>
+                      {toIdrK(pkg.price)}
+                    </span>
+                  </div>
+
                   <motion.a
-                    href={`https://wa.me/6281357662424?text=Halo%20KINARYALOKA%20Digital%20Studio%2C%20saya%20tertarik%20dengan%20${encodeURIComponent(pkg.name)}%20(Rp%20${pkg.price}).%20Boleh%20kita%20ngobrol%20dulu%3F`}
+                    href={`https://wa.me/6281357662424?text=Halo%20KINARYALOKA%20Digital%20Studio%2C%20saya%20tertarik%20dengan%20${encodeURIComponent(pkg.name)}%20(IDR%20${toIdrK(pkg.price)}).%20Boleh%20kita%20ngobrol%20dulu%3F`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    whileHover={{ scale: 1.03 }}
-                    whileTap={{ scale: 0.97 }}
-                    className={`block text-center font-outfit font-semibold text-sm py-3 rounded-xl transition-all duration-200 ${
-                      pkg.highlighted
-                        ? "bg-amber text-navy hover:bg-amber/90 shadow-lg shadow-amber/20"
-                        : "bg-navy text-krem hover:bg-navy/90"
-                    }`}
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    className={`mt-5 inline-flex w-full items-center justify-center gap-2 rounded-xl px-5 py-3 font-outfit font-semibold text-white ${accent.button}`}
                   >
-                    {pkg.ctaLabel}
+                    <Lock size={18} className="opacity-95" />
+                    Pilih Paket Ini
                   </motion.a>
+
+                  <AnimatePresence>
+                    {expanded === pkg.id && (
+                      <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: "auto" }}
+                        exit={{ opacity: 0, height: 0 }}
+                        transition={{ duration: 0.25 }}
+                        className="overflow-hidden"
+                      >
+                        <div className="mt-5 rounded-2xl bg-navy/5 border border-navy/10 p-5">
+                          <p className="font-outfit text-xs text-navy/55 mb-3">
+                            <span className="font-semibold">Cocok untuk:</span> {pkg.bestFor}
+                          </p>
+                          <ul className="space-y-2.5">
+                            {pkg.features.map((f) => (
+                              <li key={f.text} className="flex items-start gap-2.5">
+                                {f.included ? (
+                                  <Check size={15} className="text-teal mt-0.5 flex-shrink-0" />
+                                ) : (
+                                  <X size={15} className="text-navy/25 mt-0.5 flex-shrink-0" />
+                                )}
+                                <span className="font-outfit text-xs text-navy/75 leading-relaxed">
+                                  {f.text}
+                                </span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </div>
               </motion.div>
             ))}

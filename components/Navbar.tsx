@@ -6,6 +6,7 @@ import { Menu, X } from "lucide-react";
 
 const navLinks = [
   { label: "Tentang", href: "#tentang" },
+  { label: "Tim", href: "#tim" },
   { label: "Mengapa Digital", href: "#mengapa-digital" },
   { label: "Paket", href: "#paket" },
   { label: "Klien", href: "#klien" },

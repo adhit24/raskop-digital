@@ -129,7 +129,7 @@ export default function Hero() {
               whileTap={{ scale: 0.97 }}
               className="inline-flex items-center justify-center gap-2 bg-amber text-navy font-outfit font-semibold text-base px-7 py-3.5 sm:px-8 sm:py-4 rounded-full transition-all duration-200 w-full sm:w-auto"
             >
-              Kita Ngobrol Dulu
+              Ngobrol Dulu Yuk
             </motion.a>
             <motion.button
               onClick={() => {
